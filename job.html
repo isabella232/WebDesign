@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Lighthouse Island Bistro</title>
+<meta charset="utf-8">
+<style>
+body {font-family:Verdana, Arial, sans-serif;
+      background-color: #dfc625a3;
+}
+#wrapper { background-color: #e6ddb3;
+           color: #000066;
+           width: 80%;
+		   margin: auto;
+           min-width: 940px;
+}
+#leftcolumn { float: left;
+	          width: 150px;
+}
+#rightcolumn {
+               margin-left: 155px;
+               background-color:  #ebf39e;
+               color: #000000;
+/*               padding: 10px 20px;*/
+               
+}
+header{ background-color: #ccaa66;
+        color: #00005D;
+        font-size: 150%;
+        padding: 10px 10px 10px 155px;
+        height: 130px;
+        
+
+}
+    
+h2{ 
+/*    color: #869dc7;*/
+    font-family: arial, sans-serif;
+    margin: 5px;
+    color: 5d4100;
+    margin-left: 0px;
+    }    
+    
+h3 {
+     /* color: #869dc7; */
+     font-family: arial, sans-serif;
+
+}
+.content {padding: 20px 20px 0 20px;
+          margin-bottom: -39px;
+}
+.content ul{
+  list-style-position: inside;
+  left: 200px;
+}
+
+.content h3{
+ position: relative;
+ left: 35px;
+ top: 100px;
+}
+
+.content p {
+       margin-top: 0px;
+       margin-bottom: 0px;
+    }
+
+#floatright { margin: 20px;
+             float: left;
+}
+
+footer { font-size:70%;
+         text-align: center;
+		 clear: right;
+         padding-bottom: 20px;
+         background-color:#ccaa66;
+         margin-left: -155px;
+         
+         
+         
+}
+       
+    
+nav ul { list-style-type: none;
+         padding: 10px;
+}
+nav a {text-decoration: none;
+       padding: 10px;
+       font-weight: bold;
+       color: #3f1f05;
+       }
+form { background-color: #ebf39e;
+	font-family: Arial, sans-serif;
+	 width: 350px; padding: 10px;
+     }
+label { 
+    float: left; 
+/*    clear: left;*/*/
+	    display: block; width: 100px; 
+	    text-align: right; 
+	    padding-right: 10px;
+	    margin-top: 10px; }
+input, textarea { margin-top: 10px; 
+                  display: block;
+                  }
+#mySubmit { margin-left: 0px; }
+    
+
+</style>
+</head>
+<body>
+<div id="wrapper">
+  <header>
+    <!-- <h1>JavaJam Coffee House</h1> -->
+    <img src="javajamlogo.gif">
+  </header>
+  <div id="leftcolumn">
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="music.html">Music</a></li>
+      <li><a href="job.html">Job</a></li>
+	</ul>
+  </nav>
+  </div>
+  <div id="rightcolumn">
+    <div class="content">
+     <h2>Jobs at JavaJam</h2>
+     <p>Want to work at JavaJam? Fill out the form below to start your application.Required fields are marked with an asterisk *</p>
+    <form method="get" action="show_get.php">
+  <label  for="myName">*Name:</label>
+  <input align="right" type="text" name="myName" id="myName" >
+  <label for="myEmail">*E-mail:</label>
+  <input type="text" name="myEmail" id="myEmail">
+   <label for="startDate">Start Date:</label>
+  <input type="text" name="myEmail" id="myEmail">
+  <label for="myExperience">*Experience:</label>
+  <textarea name="myComments" id="myComments" rows="2" cols="20"></textarea>
+  <input id="mySubmit" type="submit" value="Apply Now">
+</form>
+    
+    
+    </div>
+    <br><br>
+    <footer>Copyright &copy; 2014 JavaJam Coffee House
+    <br>
+    <a href="mailto:shaunyong9@gmail.com">shaunyong9@gmail.com</a>
+    </footer>
+  </div>
+</div>
