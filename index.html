@@ -25,13 +25,13 @@
     <div class="content">
       <h2>Welcome to the Hotel Search Portal</h2>
       <br>
-<form>
-  <select id="country" name="country">
-    <option value="singapore">Singapore</option>
-    <option value="malaysia">Malaysia</option>
-    <option value="japan">Japan</option>
-    <option value="korea">Korea</option>
-    <input type="submit" value="Submit">
+<form action="singapore.html">
+  <select onchange="this.form.submit()" id="country" name="country">
+    <option value="singapore.html" >Singapore</option>
+    <option value="malaysia.html">Malaysia</option>
+    <option value="japan.html">Japan</option>
+    <option value="korea.html">Korea</option>
+    <input type="submit" value="Submit" >
   </select>
 </form>
 
@@ -76,6 +76,18 @@
     <!-- <h2>Panoramic View</h2> -->
 	<!-- <p>Take in some scenery! The top of our lighthouse offers a panoramic view of the countryside. Challenge your friends to climb our 100-stair tower.</p> -->
     </div>
+    <script>
+function submit_country() {
+    var submit = document.getElementsByClassName('submit');
+    if (submit.click()){
+        url = submit.val();
+        window.open(url);
+    }
+}
+    
+    
+    
+    </script>
     <br><br>
     <footer>Copyright &copy; 2018 Hotel Search Portal
     <br>
