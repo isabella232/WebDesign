@@ -1,4 +1,52 @@
 <!DOCTYPE html>
+<?php
+include "dbconnect.php";
+session_start();
+if (isset($_POST['email_val']) && isset($_POST['password_val']))
+{
+  // if the user has just tried to log in
+  $email = $_POST['email_val'];
+  $password = $_POST['password_val'];
+/*
+  $db_conn = new mysqli('localhost', 'webauth', 'webauth', 'auth');
+
+  if (mysqli_connect_errno()) {
+   echo 'Connection to database failed:'.mysqli_connect_error();
+   exit();
+  }
+*/
+	$password = md5($password);
+  $query = 'select * from users '
+           ."where email='$email' "
+           ." and password='$password'";
+// echo "<br>" .$query. "<br>";
+  $result = $dbcnx->query($query);
+  if ($result->num_rows >0 )
+  {
+    // if they are in the database register the user id
+		$user =  $result->fetch_assoc();
+    $_SESSION['valid_user'] = $user['username'];
+  }
+  $dbcnx->close();
+}
+
+if(isset($_SESSION['success_register']))
+{
+	  $email = $_SESSION['email_reg'];
+	  $query = 'select * from users '
+	           ."where email='$email' ";
+	// echo "<br>" .$query. "<br>";
+	  $result = $dbcnx->query($query);
+	  if ($result->num_rows >0 )
+	  {
+	    // if they are in the database register the user id
+			$user =  $result->fetch_assoc();
+	    $_SESSION['valid_user'] = $user['username'];
+	  }
+	  $dbcnx->close();
+}
+
+?>
 <html lang="en">
 <head>
 	<title>Hotel Search Portal</title>
@@ -119,6 +167,13 @@
     font-weight: 300;
     margin: 0 0 40px;
   }
+
+	h3 {
+		text-align: left*;
+		color: #f00;
+		/* font-weight: 20; */
+		margin: 0 0 40px;
+	}
   label {
     position: absolute;
     transform: translateY(6px);
@@ -231,34 +286,61 @@
 
     <!-- </section> -->
     <div class="form">
-
+			<?php
+				if (isset($_SESSION['valid_user']))
+				{
+					if(isset($_SESSION['success_register']))
+					{
+						unset($_SESSION['success_register']);
+						unset( $_SESSION['email_reg']);
+						echo '<a href="logout.php">Log out</a><br />';
+						echo '<h2>Start your new journey, '.$_SESSION['valid_user'].'!</h2>';
+					}
+					else{
+						echo '<a href="logout.php">Log out</a><br />';
+						echo '<h2>Hi, '.$_SESSION['valid_user'].'! What can we help you find? </h2>';
+					}
+				}
+				else
+				{
+			 ?>
         <ul class="tab-group">
-          <li><a href="#" id="signup_button" onclick="openCity(event, 'signup');" class="tab active">Sign up</a></li>
-          <li><a href="#" id="login button" onclick="openCity(event, 'login');"  class="tab"> Log in</a></li>
+          <li><a href="#" id="signup_button" onclick="openCity(event, 'signup');" class="tab">Sign Up</a></li>
+          <li><a href="#" id="login_button" onclick="openCity(event, 'login');"  class="tab"> Log In</a></li>
         </ul>
         <!-- <div class="tab-content"> -->
           <div id="signup" class="tab-content">
             <h1>Sign Up for Free</h1>
 
-            <form action="/" method="post">
-
+            <form action="submit_login.php" method="post">
+							<?php
+							if(isset($_SESSION['registered'])){
+							?>
+							<h3>The email has been registered.</h3>
+							<?php
+							unset($_SESSION['registered']);
+														}  ?>
             <div class="top-row">
               <div class="field-wrap">
-                <input type="text" placeholder="First Name*" required autocomplete="off" />
+                <input type="text" name="name1" placeholder="First Name*" required autocomplete="off" />
               </div>
 
               <div class="field-wrap">
-                <input type="text" placeholder="Last Name*" required autocomplete="off"/>
+                <input type="text" name="name2" placeholder="Last Name*" required autocomplete="off"/>
               </div>
             </div>
 
             <div class="field-wrap">
-              <input type="email" placeholder="Email Address*" required autocomplete="off"/>
+              <input type="email" name="email" placeholder="Email Address*" required autocomplete="off"/>
             </div>
 
             <div class="field-wrap">
-              <input type="password" placeholder="Set A Password*" required autocomplete="off"/>
+              <input type="password" name="password" placeholder="Set A Password*" required autocomplete="off"/>
             </div>
+
+						<div class="field-wrap">
+							<input type="password" name="password2" placeholder="Confirm Password*" required autocomplete="off"/>
+						</div>
 
             <button type="submit" class="button button-block"/>Get Started</button>
 
@@ -268,25 +350,42 @@
 
           <div id="login" class="tab-content">
             <h1>Welcome Back!</h1>
-
-            <form action="/" method="post">
-
+            <form action="login.php" method="post">
+							<?php
+							if (isset($email)){
+								?>
+								<h3>User doen't exist or password doesn't match</h3>
+							<?php } ?>
               <div class="field-wrap">
-              <input type="email" required placeholder="Email Address*" autocomplete="off"/>
-            </div>
+	              <input type="email" name="email_val" required placeholder="Email Address*" autocomplete="off"/>
+	            </div>
 
-            <div class="field-wrap">
-              <input type="password" placeholder="Password*" required autocomplete="off"/>
-            </div>
+	            <div class="field-wrap">
+	              <input type="password" name="password_val" placeholder="Password*" required autocomplete="off"/>
+	            </div>
 
-            <button class="button button-block"/>Log In</button>
+	            <button class="button button-block"/>Log In</button>
 
             </form>
-
           </div>
-          <script>document.getElementById("signup_button").click();</script>
+						<?php
+						if (isset($email))
+						{
+							// if they've tried and failed to log in
+							?>
+							<script>document.getElementById("login_button").click();</script>
+							<?php
+						}
+						else
+						{
+							?>
+							<script>document.getElementById("signup_button").click();</script>
+							<?php
+						}
+					?>
 
       </div> <!-- /form -->
+			<?php } ?>
 	</section><!--  end hero section  -->
 
 	<footer>
