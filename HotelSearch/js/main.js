@@ -5,11 +5,11 @@ $(document).ready(function(){
 
 	/*  Hamburger Menu & Icon  */
 	$('.hamburger').on('click', function(e){
-		
+
 		e.preventDefault();
 		$(this).toggleClass('opned');
 		$('header nav').toggleClass('active');
-		
+
 	});
 
 
@@ -20,7 +20,7 @@ $(document).ready(function(){
 		e.preventDefault();
 
 		var ads_box =$('.advanced_search');
-		
+
 		if(!ads_box.hasClass('advanced_displayed')){
 
 			$(this).addClass('active');

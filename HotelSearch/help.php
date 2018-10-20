@@ -16,8 +16,6 @@
 
   /*  Hero Section  */
 
-  /*  Hero Section  */
-
   .contacthero{
       width: 100%;
       height: 400px;
@@ -199,7 +197,7 @@
       </p>
       </div>
       <div id="trip">
-        <h1> Your Trip</h1>
+        <h1> Your Trips</h1>
         <p>Airbnb is, at its core, an open community dedicated to bringing the world closer together by fostering meaningful, shared experiences amongst people from all parts of the world. Our community includes millions of people from virtually every country on the globe. It is an incredibly diverse community, drawing together individuals of different cultures, values, and norms.
 
             The Airbnb community is committed to building a world where people from every background feel welcome and respected, no matter how far they have travelled from home. This commitment rests on two foundational principles that apply both to Airbnb’s hosts and guests: inclusion and respect. Our shared commitment to these principles enables every member of our community to feel welcome on the Airbnb platform no matter who they are, where they come from, how they worship, or whom they love. Airbnb recognises that some jurisdictions permit, or require, distinctions amongst individuals based on factors such as national origin, gender, marital status or sexual orientation, and it does not require hosts to violate local laws or take actions that may subject them to legal liability. Airbnb will provide additional guidance and adjust this nondiscrimination policy to reflect such permissions and requirements in the jurisdictions where they exist.
