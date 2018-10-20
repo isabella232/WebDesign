@@ -25,9 +25,9 @@
 						<li><a href="index.php">Home</a></li>
 						<li><a href="#">Rate</a></li>
 						<li><a href="#">Contact Us</a></li>
-						<li><a href="#">Login</a></li>
-						<li><a href="#">Sign Up</a></li>
 					</ul>
+					<a href="#" class="login_btn">Login</a>
+					<a href="#" class="login_btn">Register</a>
 				</nav>
 			</div>
 		</header><!--  end header section  -->
@@ -37,6 +37,24 @@
 				<h3 class="properties">Hotels</h3>
 			</section>
 	</section><!--  end hero section  -->
+<?php
+  
+  // create short variable names
+  $check_in_date =$_POST['check_in_date'];
+  $check_out_date =$_POST['check_out_date'];
+  $min_price = $_POST['min_price'];
+  $max_price = $_POST['max_price'];
+  $star_ratings = $_POST['star_ratings'];
+  $no_of_days = date_diff($check_in_date,$check_out_date)
+  if (!$check_in_date || !$check_out_date || $min_price || $max_price || $star_ratings ) {
+     echo 'You have not entered search details.  Please go back and try again.';
+     exit;
+  }
+
+?> 
+
+
+
 
 	<section class="search">
 		<div class="wrapper">
@@ -46,11 +64,12 @@
 			</form>
 			<a href="#" class="advanced_search_icon" id="advanced_search_btn"></a>
 		</div>
+
 	
     <div class="advanced_search">
 			<div class="wrapper">
 				<span class="arrow"></span>
-				<form action="results_price.php" method="post">
+				<form action="#" method="post">
 					<div class="search_fields">
 						<input type="date" class="float" id="check_in_date" name="check_in_date" placeholder="Check In Date"  autocomplete="off">
 
@@ -65,33 +84,35 @@
 
 						<input type="text" class="float" id="max_price" name="max_price" placeholder="Max. price"  autocomplete="off">
 					</div>
-					<input type="text" id="keywords" name="star_ratings" placeholder="Star Ratings"  autocomplete="off">
+					<input type="text" id="keywords" name="keywords" placeholder="Star Ratings"  autocomplete="off">
 					<input type="submit" id="submit_search" name="submit_search"/>
 				</form>
 			</div>
 		</div><!--  end advanced search section  -->
 	</section><!--  end search section  -->
 
+
 	<section class="listings">
 		<div class="wrapper">
 			<ul class="properties_list">
+           
 				<li>
 					<a href="#">
 						<img src="img/bencoolen.jpg" alt="" title="" class="property_img"/>
 					</a>
-					<span class="price">$115</span>
+					<span class="price"><?php $total_price = 115 * $no_of_days; echo "$" ."${total_price}";?> </span>
 					<div class="property_details">
 						<h1>
 							<a href="#">Bencoolen Hotel</a>
 						</h1>
 						<h2> <span class="property_size">3 stars</span></h2>
 					</div>
-				</li>
+	 </li> 
 				<li>
 					<a href="#">
 						<img src="img/HolidayInn.jpg" alt="" title="" class="property_img"/>
 					</a>
-					<span class="price">$233</span>
+					<span class="price"><?php $total_price = 233 * $no_of_days; echo "$" ."${total_price}";?></span>
 					<div class="property_details">
 						<h1>
 							<a href="#">HolidayInn</a>
@@ -103,7 +124,7 @@
 					<a href="#">
 						<img src="img/Marinabay.jpg" alt="" title="" class="property_img"/>
 					</a>
-					<span class="price">$585</span>
+					<span class="price"><?php $total_price = 585 * $no_of_days; echo "$" ."${total_price}";?></span>
 					<div class="property_details">
 						<h1>
 							<a href="#">Marina Bay Sands</a>
@@ -116,7 +137,7 @@
 					<a href="#">
 						<img src="img/PanPacific.jpg" alt="" title="" class="property_img"/>
 					</a>
-					<span class="price">$486</span>
+					<span class="price"><?php $total_price = 486 * $no_of_days; echo "$" ."${total_price}";?></span>
 					<div class="property_details">
 						<h1>
 							<a href="#">Pan Pacific Hotel Singapore</a>
@@ -129,7 +150,7 @@
 					<a href="#">
 						<img src="img/RitzCarlton.jpg" alt="" title="" class="property_img"/>
 					</a>
-					<span class="price">$795</span>
+					<span class="price"><?php $total_price = 795 * $no_of_days; echo "$" ."${total_price}";?></span>
 					<div class="property_details">
 						<h1>
 							<a href="#">Ritz Carlton</a>
@@ -141,7 +162,7 @@
 					<a href="#">
 						<img src="img/HotelJen.jpg" alt="" title="" class="property_img"/>
 					</a>
-					<span class="price">$336</span>
+					<span class="price"><?php $total_price = 336 * $no_of_days; echo "$" ."${total_price}";?></span>
 					<div class="property_details">
 						<h1>
 							<a href="#">Hotel Jen Orchard Gateway Singapore</a>

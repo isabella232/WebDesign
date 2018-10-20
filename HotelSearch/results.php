@@ -86,8 +86,9 @@
 	<section class="listings">
 		<div class="wrapper">
 			<ul class="properties_list">
-			<?php          
-     if (!strpos($search, 'BENCOOLEN')) {
+			<?php
+			echo $search;          
+     if (is_int(strpos($search, 'bencoolen')) ) {
        ?>
 				<li>
 					<a href="#">
@@ -100,7 +101,7 @@
 						</h1>
 						<h2> <span class="property_size">3 stars</span></h2>
 					</div>
-	 </li> <?php } else if (strpos($search, 'HOLIDAY') == true) {?>
+	 </li> <?php } else if (is_int(strpos($search, 'holiday')) ){?>
 				<li>
 					<a href="#">
 						<img src="img/HolidayInn.jpg" alt="" title="" class="property_img"/>
@@ -113,7 +114,7 @@
 						<h2> <span class="property_size">4 stars</span></h2>
 					</div>
 				</li>
-				<?php } else if (strpos($search, 'MARINA') == true) {?>
+				<?php } else if (is_int(strpos($search, 'marina')) ) {?>
 				<li>
 					<a href="#">
 						<img src="img/Marinabay.jpg" alt="" title="" class="property_img"/>
@@ -127,7 +128,7 @@
 							<span class="property_size">5 stars</span></h2>
 					</div>
 				</li>
-				<?php } else if (strpos($search, 'PANPACIFIC') == true) {?>
+				<?php } else  if ((gettype(strpos($search, 'panpacific')) == int) ) {?>
 				<li>
 					<a href="#">
 						<img src="img/PanPacific.jpg" alt="" title="" class="property_img"/>
@@ -141,7 +142,7 @@
 							<span class="property_size">5 stars</span></h2>
 					</div>
 				</li>
-				<?php } else if (strpos($search, 'RITZCARLTON') == true) {?>
+				<?php } else if (gettype(strpos($search, 'ritzcarlton')) == int) {?>
 				<li>
 					<a href="#">
 						<img src="img/RitzCarlton.jpg" alt="" title="" class="property_img"/>
@@ -154,7 +155,7 @@
 						<h2> <span class="property_size">5 stars</span></h2>
 					</div>
 				</li>
-				<?php } else if (strpos($search, 'HOTELJEN') == true) {?>
+				<?php } else  if (gettype(strpos($search, 'hoteljen')) == int) {?>
 				<li>
 					<a href="#">
 						<img src="img/HotelJen.jpg" alt="" title="" class="property_img"/>
