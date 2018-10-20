@@ -191,48 +191,48 @@
 				<h2>How was your stay?</h2>
 				<h4>Overall rating</h4>
 				<div class="rate">
-			    <input type="radio" id="star5" name="rate" value="5" />
-			    <label for="star5" title="text">5 stars</label>
-			    <input type="radio" id="star4" name="rate" value="4" />
-			    <label for="star4" title="text">4 stars</label>
-			    <input type="radio" id="star3" name="rate" value="3" />
-			    <label for="star3" title="text">3 stars</label>
-			    <input type="radio" id="star2" name="rate" value="2" />
-			    <label for="star2" title="text">2 stars</label>
-			    <input type="radio" id="star1" name="rate" value="1" />
-			    <label for="star1" title="text">1 star</label>
+			    <input type="radio" id="1star5" name="rate1" value="5" />
+			    <label for="1star5" title="text">5 stars</label>
+			    <input type="radio" id="1star4" name="rate1" value="4" />
+			    <label for="1star4" title="text">4 stars</label>
+			    <input type="radio" id="1star3" name="rate1" value="3" />
+			    <label for="1star3" title="text">3 stars</label>
+			    <input type="radio" id="1star2" name="rate1" value="2" />
+			    <label for="1star2" title="text">2 stars</label>
+			    <input type="radio" id="1star1" name="rate1" value="1" />
+			    <label for="1star1" title="text">1 star</label>
 			  </div>
 
 
 
 				<h2>Accuracy</h2>
 				<div class="rate">
-			    <input type="radio" id="star5" name="rate" value="5" />
-			    <label for="star5" title="text">5 stars</label>
-			    <input type="radio" id="star4" name="rate" value="4" />
-			    <label for="star4" title="text">4 stars</label>
-			    <input type="radio" id="star3" name="rate" value="3" />
-			    <label for="star3" title="text">3 stars</label>
-			    <input type="radio" id="star2" name="rate" value="2" />
-			    <label for="star2" title="text">2 stars</label>
-			    <input type="radio" id="star1" name="rate" value="1" />
-			    <label for="star1" title="text">1 star</label>
+			    <input type="radio" id="2star5" name="rate2" value="5" />
+			    <label for="2star5" title="text">5 stars</label>
+			    <input type="radio" id="2star4" name="rate2" value="4" />
+			    <label for="2star4" title="text">4 stars</label>
+			    <input type="radio" id="2star3" name="rate2" value="3" />
+			    <label for="2star3" title="text">3 stars</label>
+			    <input type="radio" id="2star2" name="rate2" value="2" />
+			    <label for="2star2" title="text">2 stars</label>
+			    <input type="radio" id="2star1" name="rate2" value="1" />
+			    <label for="2star1" title="text">1 star</label>
 			  </div>
 
 
 
 				<h2>Cleanliness</h2>
 				<div class="rate">
-			    <input type="radio" id="star5" name="rate" value="5" />
-			    <label for="star5" title="text">5 stars</label>
-			    <input type="radio" id="star4" name="rate" value="4" />
-			    <label for="star4" title="text">4 stars</label>
-			    <input type="radio" id="star3" name="rate" value="3" />
-			    <label for="star3" title="text">3 stars</label>
-			    <input type="radio" id="star2" name="rate" value="2" />
-			    <label for="star2" title="text">2 stars</label>
-			    <input type="radio" id="star1" name="rate" value="1" />
-			    <label for="star1" title="text">1 star</label>
+			    <input type="radio" id="3star5" name="rate3" value="5" />
+			    <label for="3star5" title="text">5 stars</label>
+			    <input type="radio" id="3star4" name="rate3" value="4" />
+			    <label for="3star4" title="text">4 stars</label>
+			    <input type="radio" id="3star3" name="rate3" value="3" />
+			    <label for="3star3" title="text">3 stars</label>
+			    <input type="radio" id="3star2" name="rate3" value="2" />
+			    <label for="3star2" title="text">2 stars</label>
+			    <input type="radio" id="3star1" name="rate3" value="1" />
+			    <label for="3star1" title="text">1 star</label>
 			  </div>
 
 
