@@ -3,11 +3,11 @@
     Template Author : pixelhint.com
     Author Email    : contact@pixelhint.com
     Template Name   : La Casa
-    
-    
+
+
     *****************************************
-    
-    
+
+
     - Fonts
     - General CSS
     - Header
@@ -16,7 +16,7 @@
     - Listings
     - Footer
     - Responsive CSS
-    
+
 
 */
 
@@ -95,17 +95,17 @@ h6              { font-size: .75em; margin: 1.67em 0 }
 h1, h2, h3, h4,
 h5, h6          { font-weight: bolder }
 
-.clearfix:before,  
-.clearfix:after {  
-    content: " ";  
-    display: table;  
-}  
-.clearfix:after {  
-    clear: both;  
-}  
- 
-.clearfix {  
-    *zoom: 1;  
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
 }
 
 
@@ -280,17 +280,17 @@ header nav .login_btn:hover{
    color: #95badf;
 }
 
-.search #search:-moz-placeholder{ 
-   color: #95badf;  
+.search #search:-moz-placeholder{
+   color: #95badf;
 }
 
-.search #search::-moz-placeholder{ 
-   color: #95badf;  
+.search #search::-moz-placeholder{
+   color: #95badf;
 }
 
-.search #search:-ms-input-placeholder{  
-   color: #95badf;  
-} 
+.search #search:-ms-input-placeholder{
+   color: #95badf;
+}
 
 .search #submit_search{
     display: none;
@@ -402,14 +402,14 @@ header nav .login_btn:hover{
 .search .advanced_search #check_out_date,
 .search .advanced_search #min_price,
 .search .advanced_search #max_price,
-.search .advanced_search #keywords{    
+.search .advanced_search #keywords{
     color: #ffffff;
     font-family: "lato-regular", Helvetica, Arial, sans-serif;
     font-size: 20px;
     text-transform: uppercase;
     letter-spacing: 1px;
     line-height: 22px;
-} 
+}
 
 
 .search .advanced_search #check_in_date::-webkit-input-placeholder,
@@ -420,29 +420,29 @@ header nav .login_btn:hover{
    color: #95badf;
 }
 
-.search .advanced_search #check_in_date:-moz-placeholder, 
-.search .advanced_search #check_out_date:-moz-placeholder, 
-.search .advanced_search #min_price:-moz-placeholder, 
-.search .advanced_search #max_price:-moz-placeholder, 
-.search .advanced_search #keywords:-moz-placeholder{ 
-   color: #95badf;  
+.search .advanced_search #check_in_date:-moz-placeholder,
+.search .advanced_search #check_out_date:-moz-placeholder,
+.search .advanced_search #min_price:-moz-placeholder,
+.search .advanced_search #max_price:-moz-placeholder,
+.search .advanced_search #keywords:-moz-placeholder{
+   color: #95badf;
 }
 
-.search .advanced_search #check_in_date::-moz-placeholder, 
-.search .advanced_search #check_out_date::-moz-placeholder, 
-.search .advanced_search #min_price::-moz-placeholder, 
-.search .advanced_search #max_price::-moz-placeholder, 
-.search .advanced_search #keywords::-moz-placeholder{ 
-   color: #95badf;  
+.search .advanced_search #check_in_date::-moz-placeholder,
+.search .advanced_search #check_out_date::-moz-placeholder,
+.search .advanced_search #min_price::-moz-placeholder,
+.search .advanced_search #max_price::-moz-placeholder,
+.search .advanced_search #keywords::-moz-placeholder{
+   color: #95badf;
 }
 
-.search .advanced_search #check_in_date:-ms-input-placeholder,  
-.search .advanced_search #check_out_date:-ms-input-placeholder,  
-.search .advanced_search #min_price:-ms-input-placeholder,  
-.search .advanced_search #max_price:-ms-input-placeholder,  
-.search .advanced_search #keywords:-ms-input-placeholder{  
-   color: #95badf;  
-} 
+.search .advanced_search #check_in_date:-ms-input-placeholder,
+.search .advanced_search #check_out_date:-ms-input-placeholder,
+.search .advanced_search #min_price:-ms-input-placeholder,
+.search .advanced_search #max_price:-ms-input-placeholder,
+.search .advanced_search #keywords:-ms-input-placeholder{
+   color: #95badf;
+}
 
 
 
@@ -578,7 +578,7 @@ header nav .login_btn:hover{
 
 .listings .more_listing_btn:hover{
     color: #a0c3e5;
-    border: 2px solid #a0c3e5;    
+    border: 2px solid #a0c3e5;
 }
 
 
@@ -775,7 +775,7 @@ footer .copyrights a.ph_link{
 
     .hero .caption{
         width: 92.72727272727273%;
-        padding: 0 3.636363636363636%; 
+        padding: 0 3.636363636363636%;
     }
 
     .hero .caption h3{
@@ -957,7 +957,7 @@ footer .copyrights a.ph_link{
 
     .listings .more_listing_btn{
         display: block;
-        width: 100%; 
+        width: 100%;
         padding-left: 0!important;
         padding-right: 0!important;
     }

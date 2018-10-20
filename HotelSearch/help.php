@@ -132,7 +132,6 @@
     line-height: 20px;
     margin:50px 0;
   }
-
   </style>
 </head>
 <body>
@@ -141,8 +140,7 @@
 	<section class="contacthero">
 		<header>
 			<div class="wrapper">
-				<a href="#"><img src="" height="50px" width="50px" class="logo" alt="" title=""/></a>
-				<a href="#" class="hamburger"></a>
+				<a href="#"><img src="img/letter-s.png" height="50px" width="50px" class="logo" alt="" title=""/></a>
 				<nav>
 					<ul>
 						<li><a href="index.php">Home</a></li>

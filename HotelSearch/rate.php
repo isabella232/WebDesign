@@ -29,6 +29,7 @@
 	    width: 100%;
 	    height: 100px;
 	    position: relative;
+			background-color: #95badf;
 	    /* background: url('../img/hotel_background.jpg'); */
 	    /* background-size: cover;
 	    -webkit-background-size: cover;
@@ -158,8 +159,7 @@
 	<section class="newhero">
 		<header>
 			<div class="wrapper">
-				<a href="#"><img src="" height="50px" width="50px" class="logo" alt="" title=""/></a>
-				<a href="#" class="hamburger"></a>
+				<a href="#"><img src="img/letter-s.png" height="50px" width="50px" class="logo" alt="" title=""/></a>
 				<nav>
 					<ul>
 						<li><a href="index.php">Home</a></li>

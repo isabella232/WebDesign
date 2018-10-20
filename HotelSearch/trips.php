@@ -25,55 +25,54 @@
 
 	/*  Hero Section  */
 
-	.newhero{
-	    width: 100%;
-	    height: 100px;
-	    position: relative;
-	    /* background: url('../img/hotel_background.jpg'); */
-	    /* background-size: cover;
-	    -webkit-background-size: cover;
-	    -moz-background-size: cover;
-	    -o-background-size: cover; */
-	}
 
-	.newhero .caption{
-	    width: 100%;
-	    position: absolute;
-	    text-align: center;
-	    top: 50%;
-	    margin-top: -105px;
-	}
+	  .newhero{
+	      width: 100%;
+	      height: 400px;
+	      position: relative;
+	      background: url('img/night_hotel.jpg') no-repeat bottom center;
+	      /* background-color:  #95badf; */
+	      background-size: cover;
+	      -webkit-background-size: cover;
+	      -moz-background-size: cover;
+	      -o-background-size: cover;
+	  }
 
-	.newhero .caption h2{
-	    color: #fff;
-	    font-family: "P22 Corinthia";
-	    font-size: 100px;
-	    font-weight: lighter;
-	    margin: 0;
-	    position: relative;
-	    display: block;
-	}
+	  .newhero .caption{
+	    /* width: 1100px;
+	    margin: 0 auto;
+	    position: relative; */
+	      width: 100%;
+	      position: absolute;
+	      text-align: center;
+	      top: 40%;
+	      /* margin-top: -105px; */
+	      z-index: 10;
+	  }
 
-	.newhero .caption h3{
-	    color: #fff;
-	    font-family: "lato-regular", Helvetica, Arial, sans-serif;
-	    font-size: 14px;
-	    margin: -15px 0 0 25px;
-	    left: 1px;
-	}
+	  .newhero .caption h2{
+	      color: #fff;
+	      font-family: "p22_corinthia", Helvetica, Arial, sans-serif;
+	      /* font-family: "lato-regular", Helvetica, Arial, sans-serif; */
+	      font-size: 100px;
+	      font-weight: lighter;
+	      margin: 20px;
+	      position: relative;
+	      display: block;
+	  }
 
-  .trip{
-    margin: 20px 50px 20px 0;
-  }
-  .trip img{
-    width:300px;
-    height: 300px;
-  }
+	  .newhero .caption h3{
+	      color: #fff;
+	      font-family: "lato-regular", Helvetica, Arial, sans-serif;
+	      font-size: 14px;
+	      margin: -15px 0 0 25px;
+	      left: 1px;
+	  }
 
 
   /*  listings section  */
   .newlistings{
-      padding: 100px 0;
+      padding: 50px 0 100px 0;
   }
 
   .newlistings ul.trips_list{
@@ -178,8 +177,7 @@
 	<section class="newhero">
 		<header>
 			<div class="wrapper">
-				<a href="#"><img src="" height="50px" width="50px" class="logo" alt="" title=""/></a>
-				<a href="#" class="hamburger"></a>
+				<a href="#"><img src="img/letter-s.png" height="50px" width="50px" class="logo" alt="" title=""/></a>
 				<nav>
 					<ul>
 						<li><a href="index.php">Home</a></li>
@@ -191,6 +189,14 @@
 				</nav>
 			</div>
 		</header><!--  end header section  -->
+
+		<section class="caption">
+      <h2 class="caption">Trips</h2>
+      <h3 class="properties">Here are your adventures.</h3>
+
+    </section>
+
+
 	</section><!--  end hero section  -->
 
   <section class="newlistings">
