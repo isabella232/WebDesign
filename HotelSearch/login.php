@@ -19,9 +19,9 @@
 
   .contacthero{
       width: 100%;
-      height: 100px;
+      height: 900px;
       position: relative;
-      /* background: url('img/laptop_dark_blur.jpg') no-repeat bottom center; */
+      background: url('img/blue_hotel.jpg') no-repeat bottom center;
       /* background-color:  #95badf; */
       background-size: cover;
       -webkit-background-size: cover;
@@ -229,67 +229,65 @@
       <h2 class="caption">Help</h2>
       <h3 class="properties">Questions? You’re in the right place.</h3> -->
 
-    </section>
+    <!-- </section> -->
+    <div class="form">
 
+        <ul class="tab-group">
+          <li><a href="#" id="signup_button" onclick="openCity(event, 'signup');" class="tab active">Sign up</a></li>
+          <li><a href="#" id="login button" onclick="openCity(event, 'login');"  class="tab"> Log in</a></li>
+        </ul>
+        <!-- <div class="tab-content"> -->
+          <div id="signup" class="tab-content">
+            <h1>Sign Up for Free</h1>
 
+            <form action="/" method="post">
+
+            <div class="top-row">
+              <div class="field-wrap">
+                <input type="text" placeholder="First Name*" required autocomplete="off" />
+              </div>
+
+              <div class="field-wrap">
+                <input type="text" placeholder="Last Name*" required autocomplete="off"/>
+              </div>
+            </div>
+
+            <div class="field-wrap">
+              <input type="email" placeholder="Email Address*" required autocomplete="off"/>
+            </div>
+
+            <div class="field-wrap">
+              <input type="password" placeholder="Set A Password*" required autocomplete="off"/>
+            </div>
+
+            <button type="submit" class="button button-block"/>Get Started</button>
+
+            </form>
+
+          </div>
+
+          <div id="login" class="tab-content">
+            <h1>Welcome Back!</h1>
+
+            <form action="/" method="post">
+
+              <div class="field-wrap">
+              <input type="email" required placeholder="Email Address*" autocomplete="off"/>
+            </div>
+
+            <div class="field-wrap">
+              <input type="password" placeholder="Password*" required autocomplete="off"/>
+            </div>
+
+            <button class="button button-block"/>Log In</button>
+
+            </form>
+
+          </div>
+          <script>document.getElementById("signup_button").click();</script>
+
+      </div> <!-- /form -->
 	</section><!--  end hero section  -->
-  <div class="form">
-
-      <ul class="tab-group">
-        <li><a href="#" id="signup_button" onclick="openCity(event, 'signup');" class="tab active">Sign up</a></li>
-        <li><a href="#" id="login button" onclick="openCity(event, 'login');"  class="tab"> Log in</a></li>
-      </ul>
-      <!-- <div class="tab-content"> -->
-        <div id="signup" class="tab-content">
-          <h1>Sign Up for Free</h1>
-
-          <form action="/" method="post">
-
-          <div class="top-row">
-            <div class="field-wrap">
-              <input type="text" placeholder="First Name*" required autocomplete="off" />
-            </div>
-
-            <div class="field-wrap">
-              <input type="text" placeholder="Last Name*" required autocomplete="off"/>
-            </div>
-          </div>
-
-          <div class="field-wrap">
-            <input type="email" placeholder="Email Address*" required autocomplete="off"/>
-          </div>
-
-          <div class="field-wrap">
-            <input type="password" placeholder="Set A Password*" required autocomplete="off"/>
-          </div>
-
-          <button type="submit" class="button button-block"/>Get Started</button>
-
-          </form>
-
-        </div>
-
-        <div id="login" class="tab-content">
-          <h1>Welcome Back!</h1>
-
-          <form action="/" method="post">
-
-            <div class="field-wrap">
-            <input type="email" required placeholder="Email Address*" autocomplete="off"/>
-          </div>
-
-          <div class="field-wrap">
-            <input type="password" placeholder="Password*" required autocomplete="off"/>
-          </div>
-
-          <button class="button button-block"/>Log In</button>
-
-          </form>
-
-        </div>
-        <script>document.getElementById("signup_button").click();</script>
-
-    </div> <!-- /form -->
 
 	<footer>
 		<div class="wrapper footer">
