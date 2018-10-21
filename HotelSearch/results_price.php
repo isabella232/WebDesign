@@ -13,6 +13,24 @@
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 </head>
+<style>
+     .book_btn{
+        float: none;
+        display: inline-block;
+        width: 100%;
+        border: 0;
+        margin: 0;
+        padding: 20px 0;
+        text-align: center;
+		background: #bfd9f2;
+		color: #1c3655;
+	 }
+
+     .book_btn:hover{
+        background: #eaebeb;
+    }
+
+</style>
 <body>
 
 	<section class="hero">
@@ -45,8 +63,11 @@
   $min_price = $_POST['min_price'];
   $max_price = $_POST['max_price'];
   $star_ratings = $_POST['star_ratings'];
-  $no_of_days = date_diff($check_in_date,$check_out_date)
-  if (!$check_in_date || !$check_out_date || $min_price || $max_price || $star_ratings ) {
+  $check_in_date = date_create($check_in_date);
+  $check_out_date = date_create($check_out_date);
+  $no_of_days = date_diff($check_in_date,$check_out_date);
+  $no_of_days = $no_of_days->format('%d');
+  if (!$check_in_date || !$check_out_date || !$min_price || !$max_price || !$star_ratings ) {
      echo 'You have not entered search details.  Please go back and try again.';
      exit;
   }
@@ -95,7 +116,7 @@
 	<section class="listings">
 		<div class="wrapper">
 			<ul class="properties_list">
-           
+           <?php if (($min_price <= 115 || $max_price >= 115) && $star_ratings == 3) {?> 
 				<li>
 					<a href="#">
 						<img src="img/bencoolen.jpg" alt="" title="" class="property_img"/>
@@ -106,8 +127,12 @@
 							<a href="#">Bencoolen Hotel</a>
 						</h1>
 						<h2> <span class="property_size">3 stars</span></h2>
+						<form action="confirm_booking.php" method="post">
+						<button class="book_btn" type="submit" name="book_btn">Book</button>
+		   </form>
 					</div>
-	 </li> 
+			  </li>
+		   <?php }  else if  (($min_price <= 233 || $max_price >= 233) && $star_ratings == 4) { ?>
 				<li>
 					<a href="#">
 						<img src="img/HolidayInn.jpg" alt="" title="" class="property_img"/>
@@ -120,6 +145,7 @@
 						<h2> <span class="property_size">4 stars</span></h2>
 					</div>
 				</li>
+			<?php }  else if  (($min_price <= 585 || $max_price >= 585) && $star_ratings == 5) { ?>
 				<li>
 					<a href="#">
 						<img src="img/Marinabay.jpg" alt="" title="" class="property_img"/>
@@ -133,6 +159,7 @@
 							<span class="property_size">5 stars</span></h2>
 					</div>
 				</li>
+				<?php }  else if  (($min_price <= 486 || $max_price >= 486) && $star_ratings == 5) { ?>
 				<li>
 					<a href="#">
 						<img src="img/PanPacific.jpg" alt="" title="" class="property_img"/>
@@ -146,6 +173,7 @@
 							<span class="property_size">5 stars</span></h2>
 					</div>
 				</li>
+				<?php  }  else if  (($min_price <= 795 || $max_price >= 795) && $star_ratings == 5) { ?>                                         ?>
 				<li>
 					<a href="#">
 						<img src="img/RitzCarlton.jpg" alt="" title="" class="property_img"/>
@@ -158,6 +186,7 @@
 						<h2> <span class="property_size">5 stars</span></h2>
 					</div>
 				</li>
+				<?php  }  else if  (($min_price <= 336 || $max_price >= 336) && $star_ratings == 4) { ?>    
 				<li>
 					<a href="#">
 						<img src="img/HotelJen.jpg" alt="" title="" class="property_img"/>
@@ -170,6 +199,7 @@
 						<h2><span class="property_size">4 stars</span></h2>
 					</div>
 				</li>
+				<?php } ?>
 				<!-- <li>
 					<a href="#">
 						<img src="img/HotelCarlton.jpg" alt="" title="" class="property_img"/>
