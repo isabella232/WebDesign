@@ -99,7 +99,7 @@ echo $search;
 		</div>
 
 	
-    <div class="advanced_search">
+     <div class="advanced_search">
 			<div class="wrapper">
 				<span class="arrow"></span>
 				<form action="#" method="post">
@@ -121,8 +121,7 @@ echo $search;
 					<input type="submit" id="submit_search" name="submit_search"/>
 				</form>
 			</div>
-		</div>
-	<!-- </section> end search section  
+		</div>	 </section>   
 	
 
 	<section class="listings">

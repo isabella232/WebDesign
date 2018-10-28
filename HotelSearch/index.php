@@ -124,7 +124,6 @@ print_r($product);
 			</div>
 		</div><!--  end advanced search section  -->
 	</section><!--  end search section  -->
-
 	<section class="listings">
 		<div class="wrapper">
 			<ul class="properties_list">
@@ -134,8 +133,11 @@ print_r($product);
 					</a>
 					<span class="price">$115</span>
 					<div class="property_details">
-						<h1>
-							<a href="#">Bencoolen Hotel</a>
+						<h1><form name="bencoolen"  >
+								<input type="hidden" id="hotel_name" name="hotel_name" value="Bencoolen" /> 
+								<a href="specific_hotel.php?hotel_name=Bencoolen" onclick="this.form.submit();">Bencoolen Hotel</a>
+                            </form>
+							<!-- <a href="specific_hotel.php"  onclick="document.getElementById('myform').submit();">Bencoolen Hotel</a> -->
 						</h1>
 						<h2> <span class="property_size">3 stars</span></h2>
 					</div>
@@ -147,7 +149,10 @@ print_r($product);
 					<span class="price">$233</span>
 					<div class="property_details">
 						<h1>
-							<a href="#">HolidayInn</a>
+						<form name="HolidayInn"  >
+								<input type="hidden" id="hotel_name" name="hotel_name" value="HolidayInn" /> 
+								<a href="specific_hotel.php?hotel_name=HolidayInn" onclick="this.form.submit();">Holiday Inn</a>
+                            </form>
 						</h1>
 						<h2> <span class="property_size">4 stars</span></h2>
 					</div>
@@ -159,7 +164,10 @@ print_r($product);
 					<span class="price">$585</span>
 					<div class="property_details">
 						<h1>
-							<a href="#">Marina Bay Sands</a>
+						<form name="MarinaBay"  >
+								<input type="hidden" id="hotel_name" name="hotel_name" value="MarinaBay" /> 
+								<a href="specific_hotel.php?hotel_name=Marina Bay" onclick="this.form.submit();">Marina Bay</a>
+                            </form>
 						</h1>
 						<h2> 
 							<span class="property_size">5 stars</span></h2>
@@ -172,7 +180,10 @@ print_r($product);
 					<span class="price">$486</span>
 					<div class="property_details">
 						<h1>
-							<a href="#">Pan Pacific Hotel Singapore</a>
+						<form name="PanPacific"  >
+								<input type="hidden" id="hotel_name" name="hotel_name" value="Pan Pacific" /> 
+								<a href="specific_hotel.php?hotel_name=PanPacific" onclick="this.form.submit();">Pan Pacific</a>
+                            </form>
 						</h1>
 						<h2>
 							<span class="property_size">5 stars</span></h2>
@@ -185,7 +196,10 @@ print_r($product);
 					<span class="price">$795</span>
 					<div class="property_details">
 						<h1>
-							<a href="#">Ritz Carlton</a>
+						<form name="RitzCarlton"  >
+								<input type="hidden" id="hotel_name" name="hotel_name" value="Ritz Carlton" /> 
+								<a href="specific_hotel.php?hotel_name=Ritz Carlton" onclick="this.form.submit();">Ritz Carlton</a>
+                            </form>
 						</h1>
 						<h2> <span class="property_size">5 stars</span></h2>
 					</div>
@@ -197,19 +211,25 @@ print_r($product);
 					<span class="price">$336</span>
 					<div class="property_details">
 						<h1>
-							<a href="#">Hotel Jen Orchard Gateway Singapore</a>
+						<form name="HotelJen"  >
+								<input type="hidden" id="hotel_name" name="hotel_name" value="Hotel Jen" /> 
+								<a href="specific_hotel.php?hotel_name=Hotel Jen" onclick="this.form.submit();">Hotel Jen Orchard Gateway</a>
+                            </form>
 						</h1>
 						<h2><span class="property_size">4 stars</span></h2>
 					</div>
 				</li>
-				<!-- <li>
+				<li>
 					<a href="#">
 						<img src="img/HotelCarlton.jpg" alt="" title="" class="property_img"/>
 					</a>
 					<span class="price">$310</span>
 					<div class="property_details">
 						<h1>
-							<a href="#">Carlton Hotel</a>
+						<form name="CarltonHotel"  >
+								<input type="hidden" id="hotel_name" name="hotel_name" value="Carlton Hotel" /> 
+								<a href="specific_hotel.php?hotel_name=Carlton Hotel" onclick="this.form.submit();">Carlton Hotel</a>
+                            </form>
 						</h1>
 						<h2><span class="property_size">5 stars</span></h2>
 					</div>
@@ -221,7 +241,10 @@ print_r($product);
 					<span class="price">$609</span>
 					<div class="property_details">
 						<h1>
-							<a href="#">Mandarin Oriental</a>
+						<form name="Mandarin Oriental"  >
+								<input type="hidden" id="hotel_name" name="hotel_name" value="Mandarin Oriental" /> 
+								<a href="specific_hotel.php?hotel_name=Mandarin Oriental" onclick="this.form.submit();">Mandarin Oriental</a>
+                            </form>
 						</h1>
 						<h2><span class="property_size">4 stars</span></h2>
 					</div>
@@ -233,11 +256,14 @@ print_r($product);
 					<span class="price">$239</span>
 					<div class="property_details">
 						<h1>
-							<a href="#">Swissotel Merchant Hotel</a>
+						<form name="Swissotel Merchant Hotel"  >
+								<input type="hidden" id="hotel_name" name="hotel_name" value="Swissotel Merchant Hotel" /> 
+								<a href="specific_hotel.php?hotel_name=Swissotel Merchant Hotel" onclick="this.form.submit();">Swissotel Merchant Hotel</a>
+                            </form>
 						</h1>
 						<h2><span class="property_size">4 stars</span></h2>
 					</div>
-				</li> -->
+				</li>
 			</ul>
 			<div class="more_listing">
 				<a href="#" class="more_listing_btn">View More Listings</a>
