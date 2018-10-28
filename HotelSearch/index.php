@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +9,7 @@
 	<meta name="author" content="pixelhint.com">
 	<!-- <meta name="description" content="La casa free real state fully responsive html5/css3 home page website template"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" /> -->
-	
+
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/responsive.css">
 
@@ -18,15 +21,29 @@
 	<section class="hero">
 		<header>
 			<div class="wrapper">
-				<a href="#"><img src="" height="50px" width="50px" class="logo" alt="" title=""/></a>
-				<a href="#" class="hamburger"></a>
+				<a href="#"><img src="img/letter-s.png" height="50px" width="50px" class="logo" alt="" title=""/></a>
 				<nav>
 					<ul>
 						<li><a href="index.php">Home</a></li>
-						<li><a href="#">Rate</a></li>
-						<li><a href="#">Contact Us</a></li>
+						<li><a href="trips.php">Trips</a></li>
+						<li><a href="help.php">Help</a></li>
+						<?php
+						if (isset($_SESSION['valid_user']))
+						{
+						?>
+						<li><a href="#">
+							<b>
+							<?php echo $_SESSION['valid_user']  ?>
+							</b>
+						</a></li>
+						<li><a href="logout.php">Log out</a></li>
+						<?php }
+						else{
+						?>
 						<li><a href="login.php">Login</a></li>
-						<li><a href="">Sign Up</a></li>
+						<li><a href="login.php">Sign Up</a></li>
+						<?php }
+						?>
 					</ul>
 				</nav>
 			</div>
@@ -46,7 +63,7 @@
 			</form>
 			<a href="#" class="advanced_search_icon" id="advanced_search_btn"></a>
 		</div>
-	
+
     <div class="advanced_search">
 			<div class="wrapper">
 				<span class="arrow"></span>
@@ -108,7 +125,7 @@
 						<h1>
 							<a href="#">Marina Bay Sands</a>
 						</h1>
-						<h2> 
+						<h2>
 							<span class="property_size">5 stars</span></h2>
 					</div>
 				</li>
@@ -241,6 +258,6 @@
 			Copyright © 2015 <a href="http://pixelhint.com" target="_blank" class="ph_link" title="Download more free Templates">Pixelhint.com</a>. All Rights Reserved.
 		</div>
 	</footer><!--  end footer  -->
-	
+
 </body>
 </html>

@@ -1,5 +1,5 @@
 <?php
-@$dbcnx = new mysqli('localhost', 'root', '', 'user_management');
+@$dbcnx = new mysqli('localhost', 'root', '', 'hotel_search');
 // @ to ignore error message display //
 if ($dbcnx->connect_error){
 	echo "Database is not online";
@@ -9,6 +9,4 @@ if ($dbcnx->connect_error){
 /*	else
 	echo "Congratulations...  MySql is working..";
 */
-if (!$dbcnx->select_db ("user_management"))
-	exit("<p>Unable to locate the f32ee database</p>");
 ?>
