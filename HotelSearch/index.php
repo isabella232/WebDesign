@@ -102,7 +102,7 @@ print_r($product);
     <div class="advanced_search">
 			<div class="wrapper">
 				<span class="arrow"></span>
-				<form action="results_price.php" method="post">
+				<form action="specific_price.php" method="post">
 					<div class="search_fields">
  						
 					 <input type="date" class="float" id="check_in_date" name="check_in_date" placeholder="Check In Date"  autocomplete="off">

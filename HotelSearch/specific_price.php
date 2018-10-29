@@ -1,4 +1,39 @@
 <!DOCTYPE html>
+<?php
+// if(isset($_SESSION['success_register']))
+// {
+// 	  $email = $_SESSION['email_reg'];
+// 	  $query = 'select * from users '
+// 	           ."where email='$email' ";
+// 	// echo "<br>" .$query. "<br>";
+// 	  $result = $dbcnx->query($query);
+// 	  if ($result->num_rows >0 )
+// 	  {
+// 	    // if they are in the database register the user id
+// 			$user =  $result->fetch_assoc();
+// 	    $_SESSION['valid_user'] = $user['username'];
+// 	  }
+// 	  $dbcnx->close();
+// }
+
+@ $db = new mysqli('localhost' , 'root', '', 'user_management');
+  if (mysqli_connect_errno()) {
+     echo "Error: Could not connect to database.  Please try again later.";
+     exit;
+  }
+
+  $result = mysqli_query($db,"select location, hotelname,pic_link from hotel_search");
+  if ($result) {
+      echo  " prices are updated";
+  } else {
+  	  echo "An error has occurred.  The item was not added.";
+  }
+$check_in_date = $_POST['check_in_date'];
+$check_out_date = $_POST['check_out_date'];
+$max_price = $_POST['max_price'];
+$min_price = $_POST['min_price'];
+$star_rating = $_POST['star_ratings'];
+?>
 <html lang="en">
 <head>
 	<title>Hotel Search Portal</title>
@@ -13,24 +48,6 @@
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 </head>
-<style>
-     .book_btn{
-        float: none;
-        display: inline-block;
-        width: 100%;
-        border: 0;
-        margin: 0;
-        padding: 20px 0;
-        text-align: center;
-		background: #bfd9f2;
-		color: #1c3655;
-	 }
-
-     .book_btn:hover{
-        background: #eaebeb;
-    }
-
-</style>
 <body>
 
 	<section class="hero">
@@ -54,29 +71,7 @@
 				<h2 class="caption">Find Your Dream Hotel</h2>
 				<h3 class="properties">Hotels</h3>
 			</section>
-	</section><!--  end hero section  -->
-<?php
-  
-  // create short variable names
-  $check_in_date =$_POST['check_in_date'];
-  $check_out_date =$_POST['check_out_date'];
-  $min_price = $_POST['min_price'];
-  $max_price = $_POST['max_price'];
-  $star_ratings = $_POST['star_ratings'];
-  $check_in_date = date_create($check_in_date);
-  $check_out_date = date_create($check_out_date);
-  $no_of_days = date_diff($check_in_date,$check_out_date);
-  $no_of_days = $no_of_days->format('%d');
-  if (!$check_in_date || !$check_out_date || !$min_price || !$max_price || !$star_ratings ) {
-     echo 'You have not entered search details.  Please go back and try again.';
-     exit;
-  }
-
-?> 
-
-
-
-
+	</section> 
 	<section class="search">
 		<div class="wrapper">
 			<form action="results.php" method="post">
@@ -87,7 +82,7 @@
 		</div>
 
 	
-    <div class="advanced_search">
+     <div class="advanced_search">
 			<div class="wrapper">
 				<span class="arrow"></span>
 				<form action="#" method="post">
@@ -109,35 +104,38 @@
 					<input type="submit" id="submit_search" name="submit_search"/>
 				</form>
 			</div>
-		</div><!--  end advanced search section  -->
-	</section><!--  end search section  -->
-
+		</div>	 </section>   
+	
 
 	<section class="listings">
 		<div class="wrapper">
 			<ul class="properties_list">
-           <?php if (($min_price <= 115 || $max_price >= 115) && $star_ratings == 3) {?> 
+	  <?php  $result = mysqli_query($db,"SELECT pic_link, price, hotelname, star_ratings FROM hotel_search");
+			 $num_results = $result->num_rows;
+			//  for ($i=0; $i <$num_results; $i++) {
+			// 	$row = $result->fetch_assoc();
+			while ($row = $result->fetch_assoc()) {
+                if (($min_price <= $row['price'] && $max_price >= $row['price'] ) && ($star_rating == $row['star_ratings'] ) ) {
+	         ?>
 				<li>
 					<a href="#">
-						<img src="img/bencoolen.jpg" alt="" title="" class="property_img"/>
+						<img src="<?php echo "img/".$row['pic_link']; ?> " alt="" title="" class="property_img"/>
 					</a>
-					<span class="price"><?php $total_price = 115 * $no_of_days; echo "$" ."${total_price}";?> </span>
+					<span class="price"><?php echo $row['price'] ?></span>
 					<div class="property_details">
 						<h1>
-							<a href="#">Bencoolen Hotel</a>
+                            <a href="#"><?php echo $row['hotelname']; ?></a>
+                            <p>Check-In: <?php echo $check_in_date; ?></p>
+                            <p>Check-Out: <?php echo $check_out_date; ?></p>
 						</h1>
-						<h2> <span class="property_size">3 stars</span></h2>
-						<form action="confirm_booking.php" method="post">
-						<button class="book_btn" type="submit" name="book_btn">Book</button>
-		   </form>
+						<h2> <span class="property_size"><?php echo $row['star_ratings']." stars"; ?></span></h2>
 					</div>
-			  </li>
-		   <?php }  else if  (($min_price <= 233 || $max_price >= 233) && $star_ratings == 4) { ?>
-				<li>
+	          </li>  <?php            }               }   ?>
+				<!-- <li>
 					<a href="#">
 						<img src="img/HolidayInn.jpg" alt="" title="" class="property_img"/>
 					</a>
-					<span class="price"><?php $total_price = 233 * $no_of_days; echo "$" ."${total_price}";?></span>
+					<span class="price">$233</span>
 					<div class="property_details">
 						<h1>
 							<a href="#">HolidayInn</a>
@@ -145,12 +143,12 @@
 						<h2> <span class="property_size">4 stars</span></h2>
 					</div>
 				</li>
-			<?php }  else if  (($min_price <= 585 || $max_price >= 585) && $star_ratings == 5) { ?>
+				
 				<li>
 					<a href="#">
 						<img src="img/Marinabay.jpg" alt="" title="" class="property_img"/>
 					</a>
-					<span class="price"><?php $total_price = 585 * $no_of_days; echo "$" ."${total_price}";?></span>
+					<span class="price">$585</span>
 					<div class="property_details">
 						<h1>
 							<a href="#">Marina Bay Sands</a>
@@ -159,12 +157,12 @@
 							<span class="property_size">5 stars</span></h2>
 					</div>
 				</li>
-				<?php }  else if  (($min_price <= 486 || $max_price >= 486) && $star_ratings == 5) { ?>
+				
 				<li>
 					<a href="#">
 						<img src="img/PanPacific.jpg" alt="" title="" class="property_img"/>
 					</a>
-					<span class="price"><?php $total_price = 486 * $no_of_days; echo "$" ."${total_price}";?></span>
+					<span class="price">$486</span>
 					<div class="property_details">
 						<h1>
 							<a href="#">Pan Pacific Hotel Singapore</a>
@@ -173,12 +171,12 @@
 							<span class="property_size">5 stars</span></h2>
 					</div>
 				</li>
-				<?php  }  else if  (($min_price <= 795 || $max_price >= 795) && $star_ratings == 5) { ?>                                         ?>
+				
 				<li>
 					<a href="#">
 						<img src="img/RitzCarlton.jpg" alt="" title="" class="property_img"/>
 					</a>
-					<span class="price"><?php $total_price = 795 * $no_of_days; echo "$" ."${total_price}";?></span>
+					<span class="price">$795</span>
 					<div class="property_details">
 						<h1>
 							<a href="#">Ritz Carlton</a>
@@ -186,20 +184,20 @@
 						<h2> <span class="property_size">5 stars</span></h2>
 					</div>
 				</li>
-				<?php  }  else if  (($min_price <= 336 || $max_price >= 336) && $star_ratings == 4) { ?>    
+				
 				<li>
 					<a href="#">
 						<img src="img/HotelJen.jpg" alt="" title="" class="property_img"/>
 					</a>
-					<span class="price"><?php $total_price = 336 * $no_of_days; echo "$" ."${total_price}";?></span>
+					<span class="price">$336</span>
 					<div class="property_details">
 						<h1>
 							<a href="#">Hotel Jen Orchard Gateway Singapore</a>
 						</h1>
 						<h2><span class="property_size">4 stars</span></h2>
 					</div>
-				</li>
-				<?php } ?>
+				</li> -->
+				
 				<!-- <li>
 					<a href="#">
 						<img src="img/HotelCarlton.jpg" alt="" title="" class="property_img"/>

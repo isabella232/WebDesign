@@ -140,114 +140,14 @@ echo $search;
 					<span class="price"><?php echo $row['price'] ?></span>
 					<div class="property_details">
 						<h1>
-							<a href="#"><?php echo $row['hotelname']; ?></a>
+						<form >
+								<input type="hidden" id="hotel_name" name="hotel_name" value=<?php echo $row['hotelname']; ?>/> 
+								<a href="specific_hotel.php?hotel_name=<?php echo $row['hotelname']; ?>" onclick="this.form.submit();"><?php echo $row['hotelname']; ?></a>
+                            </form>
 						</h1>
 						<h2> <span class="property_size"><?php echo $row['star_ratings']." stars"; ?></span></h2>
 					</div>
 	          </li>  <?php                             }   ?>
-				<!-- <li>
-					<a href="#">
-						<img src="img/HolidayInn.jpg" alt="" title="" class="property_img"/>
-					</a>
-					<span class="price">$233</span>
-					<div class="property_details">
-						<h1>
-							<a href="#">HolidayInn</a>
-						</h1>
-						<h2> <span class="property_size">4 stars</span></h2>
-					</div>
-				</li>
-				
-				<li>
-					<a href="#">
-						<img src="img/Marinabay.jpg" alt="" title="" class="property_img"/>
-					</a>
-					<span class="price">$585</span>
-					<div class="property_details">
-						<h1>
-							<a href="#">Marina Bay Sands</a>
-						</h1>
-						<h2> 
-							<span class="property_size">5 stars</span></h2>
-					</div>
-				</li>
-				
-				<li>
-					<a href="#">
-						<img src="img/PanPacific.jpg" alt="" title="" class="property_img"/>
-					</a>
-					<span class="price">$486</span>
-					<div class="property_details">
-						<h1>
-							<a href="#">Pan Pacific Hotel Singapore</a>
-						</h1>
-						<h2>
-							<span class="property_size">5 stars</span></h2>
-					</div>
-				</li>
-				
-				<li>
-					<a href="#">
-						<img src="img/RitzCarlton.jpg" alt="" title="" class="property_img"/>
-					</a>
-					<span class="price">$795</span>
-					<div class="property_details">
-						<h1>
-							<a href="#">Ritz Carlton</a>
-						</h1>
-						<h2> <span class="property_size">5 stars</span></h2>
-					</div>
-				</li>
-				
-				<li>
-					<a href="#">
-						<img src="img/HotelJen.jpg" alt="" title="" class="property_img"/>
-					</a>
-					<span class="price">$336</span>
-					<div class="property_details">
-						<h1>
-							<a href="#">Hotel Jen Orchard Gateway Singapore</a>
-						</h1>
-						<h2><span class="property_size">4 stars</span></h2>
-					</div>
-				</li> -->
-				
-				<!-- <li>
-					<a href="#">
-						<img src="img/HotelCarlton.jpg" alt="" title="" class="property_img"/>
-					</a>
-					<span class="price">$310</span>
-					<div class="property_details">
-						<h1>
-							<a href="#">Carlton Hotel</a>
-						</h1>
-						<h2><span class="property_size">5 stars</span></h2>
-					</div>
-				</li>
-				<li>
-					<a href="#">
-						<img src="img/MandarinOriental.jpg" alt="" title="" class="property_img"/>
-					</a>
-					<span class="price">$609</span>
-					<div class="property_details">
-						<h1>
-							<a href="#">Mandarin Oriental</a>
-						</h1>
-						<h2><span class="property_size">4 stars</span></h2>
-					</div>
-				</li>
-				<li>
-					<a href="#">
-						<img src="img/SwissotelMerchantHotel.jpg" alt="" title="" class="property_img"/>
-					</a>
-					<span class="price">$239</span>
-					<div class="property_details">
-						<h1>
-							<a href="#">Swissotel Merchant Hotel</a>
-						</h1>
-						<h2><span class="property_size">4 stars</span></h2>
-					</div>
-				</li> -->
 			</ul>
 			<div class="more_listing">
 				<a href="#" class="more_listing_btn">View More Listings</a>
