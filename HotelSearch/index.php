@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <?php
@@ -19,35 +16,35 @@ session_start();
 // 	  }
 // 	  $dbcnx->close();
 // }
-// 
-// @ $db = new mysqli('localhost' , 'root', '', 'user_management');
-//   if (mysqli_connect_errno()) {
-//      echo "Error: Could not connect to database.  Please try again later.";
-//      exit;
-//   }
-//
-//   $result = mysqli_query($db,"select location, hotelname from hotel_search");
-//   $num_results = $result->num_rows;
-// //   echo "<p>Number of products found " . $num_results;
-//   $product = [];
-//   $sales = [];
-//
-// //   print_r( $product);
-//
-// while ($row = $result->fetch_assoc()) {
-//     $product[] = $row['location'];
-//     $sales[] = $row['hotelname'];
-// }
-// print_r($product);
-//   if ($result) {
-//       echo  " prices are updated";
-//   } else {
-//   	  echo "An error has occurred.  The item was not added.";
-//   }
-//
-//   $db->close();
-//
-//
+
+@ $db = new mysqli('localhost' , 'root', '', 'user_management');
+  if (mysqli_connect_errno()) {
+     echo "Error: Could not connect to database.  Please try again later.";
+     exit;
+  }
+
+  $result = mysqli_query($db,"select location, hotelname from hotel_search");
+  $num_results = $result->num_rows;
+//   echo "<p>Number of products found " . $num_results;
+  $product = [];
+  $sales = [];
+
+//   print_r( $product);
+
+while ($row = $result->fetch_assoc()) {
+    $product[] = $row['location'];
+    $sales[] = $row['hotelname'];
+}
+print_r($product);
+  if ($result) {
+      echo  " prices are updated";
+  } else {
+  	  echo "An error has occurred.  The item was not added.";
+  }
+
+  $db->close();
+
+
 
 
 
@@ -61,7 +58,7 @@ session_start();
 	<meta name="author" content="pixelhint.com">
 	<!-- <meta name="description" content="La casa free real state fully responsive html5/css3 home page website template"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" /> -->
-
+	
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/responsive.css">
 
@@ -73,29 +70,15 @@ session_start();
 	<section class="hero">
 		<header>
 			<div class="wrapper">
-				<a href="#"><img src="img/letter-s.png" height="50px" width="50px" class="logo" alt="" title=""/></a>
+				<a href="#"><img src="" height="50px" width="50px" class="logo" alt="" title=""/></a>
+				<a href="#" class="hamburger"></a>
 				<nav>
 					<ul>
 						<li><a href="index.php">Home</a></li>
 						<li><a href="trips.php">Trips</a></li>
 						<li><a href="help.php">Help</a></li>
-						<?php
-						if (isset($_SESSION['valid_user']))
-						{
-						?>
-						<li><a href="#">
-							<b>
-							<?php echo $_SESSION['valid_user']  ?>
-							</b>
-						</a></li>
-						<li><a href="logout.php">Log out</a></li>
-						<?php }
-						else{
-						?>
 						<li><a href="login.php">Login</a></li>
-						<li><a href="login.php">Sign Up</a></li>
-						<?php }
-						?>
+						<li><a href="">Sign Up</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -115,18 +98,18 @@ session_start();
 			</form>
 			<a href="#" class="advanced_search_icon" id="advanced_search_btn"></a>
 		</div>
-
+	 
     <div class="advanced_search">
 			<div class="wrapper">
 				<span class="arrow"></span>
 				<form action="results_price.php" method="post">
 					<div class="search_fields">
-
+ 						
 					 <input type="date" class="float" id="check_in_date" name="check_in_date" placeholder="Check In Date"  autocomplete="off">
 
 						<hr class="field_sep float"/>
 
-						<input type="date" class="float" id="check_out_date" name="check_out_date" placeholder="Check Out Date"  autocomplete="off">
+						<input type="date" class="float" id="check_out_date" name="check_out_date" placeholder="Check Out Date"  autocomplete="off"> 
 					</div>
 					<div class="search_fields">
 						<input type="text" class="float" id="min_price" name="min_price" placeholder="Min. Price"  autocomplete="off">
@@ -186,7 +169,7 @@ session_start();
 								<a href="specific_hotel.php?hotel_name=Marina Bay" onclick="this.form.submit();">Marina Bay</a>
                             </form>
 						</h1>
-						<h2>
+						<h2> 
 							<span class="property_size">5 stars</span></h2>
 					</div>
 				</li>
@@ -337,6 +320,6 @@ session_start();
 			Copyright © 2015 <a href="http://pixelhint.com" target="_blank" class="ph_link" title="Download more free Templates">Pixelhint.com</a>. All Rights Reserved.
 		</div>
 	</footer><!--  end footer  -->
-
+	
 </body>
 </html>
