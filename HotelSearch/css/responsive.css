@@ -1,24 +1,4 @@
-/*
 
-    Template Author : pixelhint.com
-    Author Email    : contact@pixelhint.com
-    Template Name   : La Casa
-
-
-    *****************************************
-
-
-    - Fonts
-    - General CSS
-    - Header
-    - Hero
-    - Search
-    - Listings
-    - Footer
-    - Responsive CSS
-
-
-*/
 
 
 
@@ -435,6 +415,7 @@ header nav .login_btn:hover{
 .search .advanced_search #keywords::-moz-placeholder{
    color: #95badf;
 }
+
 
 .search .advanced_search #check_in_date:-ms-input-placeholder,
 .search .advanced_search #check_out_date:-ms-input-placeholder,

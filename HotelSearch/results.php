@@ -1,4 +1,56 @@
 <!DOCTYPE html>
+<?php
+// if(isset($_SESSION['success_register']))
+// {
+// 	  $email = $_SESSION['email_reg'];
+// 	  $query = 'select * from users '
+// 	           ."where email='$email' ";
+// 	// echo "<br>" .$query. "<br>";
+// 	  $result = $dbcnx->query($query);
+// 	  if ($result->num_rows >0 )
+// 	  {
+// 	    // if they are in the database register the user id
+// 			$user =  $result->fetch_assoc();
+// 	    $_SESSION['valid_user'] = $user['username'];
+// 	  }
+// 	  $dbcnx->close();
+// }
+
+@ $db = new mysqli('localhost' , 'root', '', 'user_management');
+  if (mysqli_connect_errno()) {
+     echo "Error: Could not connect to database.  Please try again later.";
+     exit;
+  }
+
+  $result = mysqli_query($db,"select location, hotelname,pic_link from hotel_search");
+  $num_results = $result->num_rows;
+//   echo "<p>Number of products found " . $num_results;
+
+
+//   print_r( $product);
+
+while ($row = $result->fetch_assoc()) {
+    $location[] = $row['location'];
+	$hotelname[] = $row['hotelname'];
+	$pic_link[] = $row['pic_link'];
+}
+  if ($result) {
+      echo  " prices are updated";
+  } else {
+  	  echo "An error has occurred.  The item was not added.";
+  }
+
+$search = $_POST['search'];
+echo $search;
+
+
+
+
+
+
+
+
+?>
 <html lang="en">
 <head>
 	<title>Hotel Search Portal</title>
@@ -36,17 +88,7 @@
 				<h2 class="caption">Find Your Dream Hotel</h2>
 				<h3 class="properties">Hotels</h3>
 			</section>
-	</section><!--  end hero section  -->
-<?php
-   
-   $search = $_POST['search'];
-   if (!$search) {
-       echo "You have not entered search details. Please go back and try again";
-       exit;
-   }
-
-?>
-
+	</section> 
 	<section class="search">
 		<div class="wrapper">
 			<form action="results.php" method="post">
@@ -79,30 +121,32 @@
 					<input type="submit" id="submit_search" name="submit_search"/>
 				</form>
 			</div>
-		</div><!--  end advanced search section  -->
-	</section><!--  end search section  -->
-
+		</div>
+	<!-- </section> end search section  
+	
 
 	<section class="listings">
 		<div class="wrapper">
 			<ul class="properties_list">
-			<?php
-			echo $search;          
-     if (is_int(strpos($search, 'bencoolen')) ) {
-       ?>
+	  <?php  $result = mysqli_query($db,"SELECT pic_link, price, hotelname, star_ratings FROM hotel_search WHERE location  LIKE '%$search%'");
+			 $num_results = $result->num_rows;
+			//  for ($i=0; $i <$num_results; $i++) {
+			// 	$row = $result->fetch_assoc();
+			while ($row = $result->fetch_assoc()) {
+	         ?>
 				<li>
 					<a href="#">
-						<img src="img/bencoolen.jpg" alt="" title="" class="property_img"/>
+						<img src="<?php echo "img/".$row['pic_link']; ?> " alt="" title="" class="property_img"/>
 					</a>
-					<span class="price">$115</span>
+					<span class="price"><?php echo $row['price'] ?></span>
 					<div class="property_details">
 						<h1>
-							<a href="#">Bencoolen Hotel</a>
+							<a href="#"><?php echo $row['hotelname']; ?></a>
 						</h1>
-						<h2> <span class="property_size">3 stars</span></h2>
+						<h2> <span class="property_size"><?php echo $row['star_ratings']." stars"; ?></span></h2>
 					</div>
-	 </li> <?php } else if (is_int(strpos($search, 'holiday')) ){?>
-				<li>
+	          </li>  <?php                             }   ?>
+				<!-- <li>
 					<a href="#">
 						<img src="img/HolidayInn.jpg" alt="" title="" class="property_img"/>
 					</a>
@@ -114,7 +158,7 @@
 						<h2> <span class="property_size">4 stars</span></h2>
 					</div>
 				</li>
-				<?php } else if (is_int(strpos($search, 'marina')) ) {?>
+				
 				<li>
 					<a href="#">
 						<img src="img/Marinabay.jpg" alt="" title="" class="property_img"/>
@@ -128,7 +172,7 @@
 							<span class="property_size">5 stars</span></h2>
 					</div>
 				</li>
-				<?php } else  if ((gettype(strpos($search, 'panpacific')) == int) ) {?>
+				
 				<li>
 					<a href="#">
 						<img src="img/PanPacific.jpg" alt="" title="" class="property_img"/>
@@ -142,7 +186,7 @@
 							<span class="property_size">5 stars</span></h2>
 					</div>
 				</li>
-				<?php } else if (gettype(strpos($search, 'ritzcarlton')) == int) {?>
+				
 				<li>
 					<a href="#">
 						<img src="img/RitzCarlton.jpg" alt="" title="" class="property_img"/>
@@ -155,7 +199,7 @@
 						<h2> <span class="property_size">5 stars</span></h2>
 					</div>
 				</li>
-				<?php } else  if (gettype(strpos($search, 'hoteljen')) == int) {?>
+				
 				<li>
 					<a href="#">
 						<img src="img/HotelJen.jpg" alt="" title="" class="property_img"/>
@@ -167,8 +211,8 @@
 						</h1>
 						<h2><span class="property_size">4 stars</span></h2>
 					</div>
-				</li>
-				<?php }?>
+				</li> -->
+				
 				<!-- <li>
 					<a href="#">
 						<img src="img/HotelCarlton.jpg" alt="" title="" class="property_img"/>

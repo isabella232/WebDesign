@@ -3,6 +3,58 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
+<?php
+// if(isset($_SESSION['success_register']))
+// {
+// 	  $email = $_SESSION['email_reg'];
+// 	  $query = 'select * from users '
+// 	           ."where email='$email' ";
+// 	// echo "<br>" .$query. "<br>";
+// 	  $result = $dbcnx->query($query);
+// 	  if ($result->num_rows >0 )
+// 	  {
+// 	    // if they are in the database register the user id
+// 			$user =  $result->fetch_assoc();
+// 	    $_SESSION['valid_user'] = $user['username'];
+// 	  }
+// 	  $dbcnx->close();
+// }
+// 
+// @ $db = new mysqli('localhost' , 'root', '', 'user_management');
+//   if (mysqli_connect_errno()) {
+//      echo "Error: Could not connect to database.  Please try again later.";
+//      exit;
+//   }
+//
+//   $result = mysqli_query($db,"select location, hotelname from hotel_search");
+//   $num_results = $result->num_rows;
+// //   echo "<p>Number of products found " . $num_results;
+//   $product = [];
+//   $sales = [];
+//
+// //   print_r( $product);
+//
+// while ($row = $result->fetch_assoc()) {
+//     $product[] = $row['location'];
+//     $sales[] = $row['hotelname'];
+// }
+// print_r($product);
+//   if ($result) {
+//       echo  " prices are updated";
+//   } else {
+//   	  echo "An error has occurred.  The item was not added.";
+//   }
+//
+//   $db->close();
+//
+//
+
+
+
+
+
+?>
+
 <head>
 	<title>Hotel Search Portal</title>
 	<meta charset="utf-8">
@@ -56,9 +108,9 @@ session_start();
 	</section><!--  end hero section  -->
 
 	<section class="search">
-		<div class="wrapper">
+		 <div class="wrapper">
 			<form action="results.php" method="post">
-				<input type="text" id="search" name="search" placeholder="What are you looking for?"  autocomplete="off"/>
+			<input type="text" id="search" name="search" placeholder="Search By Location"  autocomplete="off"/>
 				<input type="submit" id="submit_search" name="submit_search"/>
 			</form>
 			<a href="#" class="advanced_search_icon" id="advanced_search_btn"></a>
@@ -69,7 +121,8 @@ session_start();
 				<span class="arrow"></span>
 				<form action="results_price.php" method="post">
 					<div class="search_fields">
-						<input type="date" class="float" id="check_in_date" name="check_in_date" placeholder="Check In Date"  autocomplete="off">
+
+					 <input type="date" class="float" id="check_in_date" name="check_in_date" placeholder="Check In Date"  autocomplete="off">
 
 						<hr class="field_sep float"/>
 

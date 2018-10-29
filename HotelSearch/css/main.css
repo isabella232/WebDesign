@@ -329,6 +329,7 @@ header nav .login_btn:hover{
     background: #cbe0f4;
 }
 
+
 .search .advanced_search #check_in_date,
 .search .advanced_search #check_out_date{
     width: 429px;
@@ -367,6 +368,7 @@ header nav .login_btn:hover{
     background: #cbe0f4;
 }
 
+
 .search .advanced_search #check_in_date,
 .search .advanced_search #check_out_date,
 .search .advanced_search #min_price,
@@ -381,6 +383,7 @@ header nav .login_btn:hover{
 } 
 
 
+
 .search .advanced_search #check_in_date::-webkit-input-placeholder,
 .search .advanced_search #check_out_date::-webkit-input-placeholder,
 .search .advanced_search #min_price::-webkit-input-placeholder,
@@ -388,6 +391,7 @@ header nav .login_btn:hover{
 .search .advanced_search #keywords::-webkit-input-placeholder{
    color: #95badf;
 }
+
 
 .search .advanced_search #check_in_date:-moz-placeholder, 
 .search .advanced_search #check_out_date:-moz-placeholder, 
@@ -404,6 +408,7 @@ header nav .login_btn:hover{
 .search .advanced_search #keywords::-moz-placeholder{ 
    color: #95badf;  
 }
+
 
 .search .advanced_search #check_in_date:-ms-input-placeholder,  
 .search .advanced_search #check_out_date:-ms-input-placeholder,  
