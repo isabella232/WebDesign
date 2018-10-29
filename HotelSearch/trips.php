@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -181,10 +184,25 @@
 				<nav>
 					<ul>
 						<li><a href="index.php">Home</a></li>
-						<li><a href="#">Rate</a></li>
-						<li><a href="#">Contact Us</a></li>
-						<li><a href="#">Login</a></li>
-						<li><a href="#">Sign Up</a></li>
+						<li><a href="trips.php">Trips</a></li>
+						<li><a href="help.php">Help</a></li>
+						<?php
+						if (isset($_SESSION['valid_user']))
+						{
+						?>
+						<li><a href="#">
+							<b>
+							<?php echo $_SESSION['valid_user']  ?>
+							</b>
+						</a></li>
+						<li><a href="logout.php">Log out</a></li>
+						<?php }
+						else{
+						?>
+						<li><a href="login.php">Login</a></li>
+						<li><a href="login.php">Sign Up</a></li>
+						<?php }
+						?>
 					</ul>
 				</nav>
 			</div>

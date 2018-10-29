@@ -1,3 +1,8 @@
+<?php
+include "dbconnect.php";
+session_start();
+$_SESSION['hotel'] = 'Marinabay'
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -163,10 +168,25 @@
 				<nav>
 					<ul>
 						<li><a href="index.php">Home</a></li>
-						<li><a href="#">Rate</a></li>
-						<li><a href="#">Contact Us</a></li>
-						<li><a href="#">Login</a></li>
-						<li><a href="#">Sign Up</a></li>
+						<li><a href="trips.php">Trips</a></li>
+						<li><a href="help.php">Help</a></li>
+						<?php
+						if (isset($_SESSION['valid_user']))
+						{
+						?>
+						<li><a href="#">
+							<b>
+							<?php echo $_SESSION['valid_user']  ?>
+							</b>
+						</a></li>
+						<li><a href="logout.php">Log out</a></li>
+						<?php }
+						else{
+						?>
+						<li><a href="login.php">Login</a></li>
+						<li><a href="login.php">Sign Up</a></li>
+						<?php }
+						?>
 					</ul>
 				</nav>
 			</div>
@@ -184,112 +204,68 @@
 			<h3> 01-Jul-2020 </br>to </br>08-Jul-2020</h3>
 		</div>
 		<!-- right column is comment section -->
-		<div id="rightcolumn">
-			<section class="review">
-				<h2>Describe your experience</h2>
-				<textarea name="review" id="review" cols="40" rows="5" placeholder="What are you looking for?" autocomplete="off"></textarea>
-				<h2>How was your stay?</h2>
-				<h4>Overall rating</h4>
-				<div class="rate">
-			    <input type="radio" id="1star5" name="rate1" value="5" />
-			    <label for="1star5" title="text">5 stars</label>
-			    <input type="radio" id="1star4" name="rate1" value="4" />
-			    <label for="1star4" title="text">4 stars</label>
-			    <input type="radio" id="1star3" name="rate1" value="3" />
-			    <label for="1star3" title="text">3 stars</label>
-			    <input type="radio" id="1star2" name="rate1" value="2" />
-			    <label for="1star2" title="text">2 stars</label>
-			    <input type="radio" id="1star1" name="rate1" value="1" />
-			    <label for="1star1" title="text">1 star</label>
-			  </div>
+		<form action="submit_rate.php" method="post">
+			<div id="rightcolumn">
+				<section class="review">
+					<h2>Describe your experience</h2>
+					<textarea name="ReviewContent" id="review" cols="40" rows="5" placeholder="" autocomplete="off"></textarea>
+					<h2>Cleanliness</h2>
+					<div class="rate">
+				    <input type="radio" id="1star5" name="Cleanliness" value="5" />
+				    <label for="1star5" title="text">5 stars</label>
+				    <input type="radio" id="1star4" name="Cleanliness" value="4" />
+				    <label for="1star4" title="text">4 stars</label>
+				    <input type="radio" id="1star3" name="Cleanliness" value="3" />
+				    <label for="1star3" title="text">3 stars</label>
+				    <input type="radio" id="1star2" name="Cleanliness" value="2" />
+				    <label for="1star2" title="text">2 stars</label>
+				    <input type="radio" id="1star1" name="Cleanliness" value="1" />
+				    <label for="1star1" title="text">1 star</label>
+				  </div>
 
 
 
-				<h2>Accuracy</h2>
-				<div class="rate">
-			    <input type="radio" id="2star5" name="rate2" value="5" />
-			    <label for="2star5" title="text">5 stars</label>
-			    <input type="radio" id="2star4" name="rate2" value="4" />
-			    <label for="2star4" title="text">4 stars</label>
-			    <input type="radio" id="2star3" name="rate2" value="3" />
-			    <label for="2star3" title="text">3 stars</label>
-			    <input type="radio" id="2star2" name="rate2" value="2" />
-			    <label for="2star2" title="text">2 stars</label>
-			    <input type="radio" id="2star1" name="rate2" value="1" />
-			    <label for="2star1" title="text">1 star</label>
-			  </div>
+					<h2>Comfort</h2>
+					<div class="rate">
+				    <input type="radio" id="2star5" name="Comfort" value="5" />
+				    <label for="2star5" title="text">5 stars</label>
+				    <input type="radio" id="2star4" name="Comfort" value="4" />
+				    <label for="2star4" title="text">4 stars</label>
+				    <input type="radio" id="2star3" name="Comfort" value="3" />
+				    <label for="2star3" title="text">3 stars</label>
+				    <input type="radio" id="2star2" name="Comfort" value="2" />
+				    <label for="2star2" title="text">2 stars</label>
+				    <input type="radio" id="2star1" name="Comfort" value="1" />
+				    <label for="2star1" title="text">1 star</label>
+				  </div>
 
 
 
-				<h2>Cleanliness</h2>
-				<div class="rate">
-			    <input type="radio" id="3star5" name="rate3" value="5" />
-			    <label for="3star5" title="text">5 stars</label>
-			    <input type="radio" id="3star4" name="rate3" value="4" />
-			    <label for="3star4" title="text">4 stars</label>
-			    <input type="radio" id="3star3" name="rate3" value="3" />
-			    <label for="3star3" title="text">3 stars</label>
-			    <input type="radio" id="3star2" name="rate3" value="2" />
-			    <label for="3star2" title="text">2 stars</label>
-			    <input type="radio" id="3star1" name="rate3" value="1" />
-			    <label for="3star1" title="text">1 star</label>
-			  </div>
+					<h2>Location</h2>
+					<div class="rate">
+				    <input type="radio" id="3star5" name="Location" value="5" />
+				    <label for="3star5" title="text">5 stars</label>
+				    <input type="radio" id="3star4" name="Location" value="4" />
+				    <label for="3star4" title="text">4 stars</label>
+				    <input type="radio" id="3star3" name="Location" value="3" />
+				    <label for="3star3" title="text">3 stars</label>
+				    <input type="radio" id="3star2" name="Location" value="2" />
+				    <label for="3star2" title="text">2 stars</label>
+				    <input type="radio" id="3star1" name="Location" value="1" />
+				    <label for="3star1" title="text">1 star</label>
+				  </div>
 
-
-			</section>
-			<input type="submit" value="Submit" class="button"></input>
-		</div>
+				</section>
+				<input type="submit" value="Submit" class="button"></input>
+			</div>
+		</form>
 	</div>
 
-	<footer>
-		<div class="wrapper footer">
-			<ul>
-				<li class="links">
-					<ul>
-						<li><a href="#">About</a></li>
-						<li><a href="#">Support</a></li>
-						<li><a href="#">Terms</a></li>
-						<li><a href="#">Policy</a></li>
-						<li><a href="#">Contact</a></li>
-					</ul>
-				</li>
 
-				<li class="links">
-					<ul>
-						<li><a href="#">Appartements</a></li>
-						<li><a href="#">Houses</a></li>
-						<li><a href="#">Villas</a></li>
-						<li><a href="#">Mansions</a></li>
-						<li><a href="#">...</a></li>
-					</ul>
-				</li>
-
-				<li class="links">
-					<ul>
-						<li><a href="#">New York</a></li>
-						<li><a href="#">Los Anglos</a></li>
-						<li><a href="#">Miami</a></li>
-						<li><a href="#">Washington</a></li>
-						<li><a href="#">...</a></li>
-					</ul>
-				</li>
-
-				<li class="about">
-					<p>La Casa is real estate minimal html5 website template, designed and coded by pixelhint, tellus varius, dictum erat vel, maximus tellus. Sed vitae auctor ipsum</p>
-					<ul>
-						<li><a href="http://facebook.com/pixelhint" class="facebook" target="_blank"></a></li>
-						<li><a href="http://twitter.com/pixelhint" class="twitter" target="_blank"></a></li>
-						<li><a href="http://plus.google.com/+Pixelhint" class="google" target="_blank"></a></li>
-						<li><a href="#" class="skype"></a></li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-
-		<div class="copyrights wrapper">
-			Copyright © 2015 <a href="http://pixelhint.com" target="_blank" class="ph_link" title="Download more free Templates">Pixelhint.com</a>. All Rights Reserved.
-		</div>
-	</footer><!--  end footer  -->
+	<footer>Copyright &copy; 2014 JavaJam Coffee House
+	<br>
+	<a href="mailto:shaunyong9@gmail.com">shaunyong9@gmail.com</a>
+	</footer>
 
 </body>
 </html>

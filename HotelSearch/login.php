@@ -263,17 +263,31 @@ if(isset($_SESSION['success_register']))
 <body>
 
 	<section class="contacthero">
-		<header>
+    <header>
 			<div class="wrapper">
-				<a href="#"><img src="" height="50px" width="50px" class="logo" alt="" title=""/></a>
-				<a href="#" class="hamburger"></a>
+				<a href="#"><img src="img/letter-s.png" height="50px" width="50px" class="logo" alt="" title=""/></a>
 				<nav>
 					<ul>
 						<li><a href="index.php">Home</a></li>
-						<li><a href="#">Rate</a></li>
-						<li><a href="#">Contact Us</a></li>
-						<li><a href="#">Login</a></li>
-						<li><a href="#">Sign Up</a></li>
+						<li><a href="trips.php">Trips</a></li>
+						<li><a href="help.php">Help</a></li>
+						<?php
+						if (isset($_SESSION['valid_user']))
+						{
+						?>
+						<li><a href="#">
+							<b>
+							<?php echo $_SESSION['valid_user']  ?>
+							</b>
+						</a></li>
+						<li><a href="logout.php">Log out</a></li>
+						<?php }
+						else{
+						?>
+						<li><a href="login.php">Login</a></li>
+						<li><a href="login.php">Sign Up</a></li>
+						<?php }
+						?>
 					</ul>
 				</nav>
 			</div>
@@ -312,7 +326,7 @@ if(isset($_SESSION['success_register']))
           <div id="signup" class="tab-content">
             <h1>Sign Up for Free</h1>
 
-            <form action="submit_login.php" method="post">
+            <form action="submit_register.php" method="post">
 							<?php
 							if(isset($_SESSION['registered'])){
 							?>
