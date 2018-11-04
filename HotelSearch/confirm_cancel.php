@@ -100,7 +100,7 @@ $hotel_info = $result->fetch_assoc();
 						<h4>Guests: <?php echo $people_count ?></h4>
 						<hr>
 						<h2>Payment</h2>
-						<form action="submit_booking.php" method="post">
+						<form action="submit_cancel.php" method="post">
 							<table>
 								<tr><th>Room</th><th>Quantity</th><th>Price per night</th><th>Stay</th><th>Subtotal</th></tr>
 							<?php
@@ -122,25 +122,16 @@ $hotel_info = $result->fetch_assoc();
 								<tr>
 									<td>Double room</td>
 									<td><?php echo $double?></td>
-									<td><?php echo $double*$double_price ?></td>
+									<td>$<?php echo $double*$double_price ?></td>
 									<td><?php echo $period ?></td>
-									<td><?php echo $double*$double_price*$period ?></td>
+									<td>$<?php echo $double*$double_price*$period ?></td>
 								</tr>
 								<?php
 							}
 							 ?>
 							 <tr><td colspan="5">Total Price: <b>$<?php echo $total_price  ?></b></td></tr>
 						 </table>
-							 <input type="text" name="hotel" value ='<?php echo $specific_hotel ?>' hidden>
-							 <input type="text" name="user" value ='<?php echo $user ?>' hidden>
-							 <input type="text" name="single" value ='<?php echo $single ?>' hidden>
-							 <input type="text" name="double" value ='<?php echo $double ?>' hidden>
-							 <input type="text" name="check_in_date" value ='<?php echo $check_in_date ?>' hidden>
-							 <input type="text" name="check_out_date" value ='<?php echo $check_out_date ?>' hidden>
-							 <input type="text" name="people_count" value ='<?php echo $people_count ?>' hidden>
-							 <input type="text" name="single_price" value ='<?php echo $single_price ?>' hidden>
-							 <input type="text" name="double_price" value ='<?php echo $double_price ?>' hidden>
-							 <input type="text" name="total_price" value ='<?php echo $total_price ?>' hidden>
+							 <input type="text" name="booking_id" value ='<?php echo $booking_id ?>' hidden>
 							 <input type="submit" value="Confirm Cancel" class="button"></input>
 						</form>
 					</div>

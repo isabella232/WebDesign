@@ -116,9 +116,9 @@ $hotel_info = $result->fetch_assoc();
 							<tr>
 								<td>Double room</td>
 								<td><?php echo $double?></td>
-								<td><?php echo $double*$double_price ?></td>
+								<td>$<?php echo $double*$double_price ?></td>
 								<td><?php echo $period ?></td>
-								<td><?php echo $double*$double_price*$period ?></td>
+								<td>$<?php echo $double*$double_price*$period ?></td>
 							</tr>
 							<?php
 						}
