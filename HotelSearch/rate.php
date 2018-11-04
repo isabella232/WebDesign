@@ -1,7 +1,10 @@
 <?php
 include "dbconnect.php";
 session_start();
-$_SESSION['hotel'] = 'Marinabay'
+$booking_id= $_GET['booking_id'];
+$query = "SELECT * FROM trips LEFT JOIN hotel_search ON trips.hotel= hotel_search.hotelname WHERE id  LIKE '$booking_id'";
+$result = mysqli_query($dbcnx,$query);
+$row = $result->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,9 +14,7 @@ $_SESSION['hotel'] = 'Marinabay'
 	<meta name="author" content="pixelhint.com">
 	<!-- <meta name="description" content="La casa free real state fully responsive html5/css3 home page website template"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" /> -->
-
-	<link rel="stylesheet" type="text/css" href="css/reset.css">
-	<link rel="stylesheet" type="text/css" href="css/responsive.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
 
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
@@ -138,18 +139,6 @@ $_SESSION['hotel'] = 'Marinabay'
 	}
 
 
-	.button {
-		display:block;
-		background-color: #ff5a60;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-		font-weight: 700;
-	}
-
 	img.rate_hotel{
 	    width: 80%;
 	    height: auto!important;
@@ -198,13 +187,15 @@ $_SESSION['hotel'] = 'Marinabay'
 	  <div id="leftcolumn">
 			<h2>Rate & Review</h2>
 			<a href="#">
-				<img src="img/Marinabay.jpg" alt="" title="" class="rate_hotel"/>
+				<img src="img/<?php echo $row['pic_link'] ?>" alt="" title="" class="rate_hotel"/>
 			</a>
 			<h3>Marinabay Sand</h3>
-			<h3> 01-Jul-2020 </br>to </br>08-Jul-2020</h3>
+			<h3> <?php echo $row['check_in'] ?> </br>to </br><?php echo $row['check_out'] ?></h3>
 		</div>
 		<!-- right column is comment section -->
 		<form action="submit_rate.php" method="post">
+			<input type = "text" value = "<?php echo $booking_id ?>" name = "booking_id" hidden/>
+			<input type = "text" value = "<?php echo $row['hotelname'] ?>" name = "hotel" hidden/>
 			<div id="rightcolumn">
 				<section class="review">
 					<h2>Describe your experience</h2>
@@ -260,12 +251,6 @@ $_SESSION['hotel'] = 'Marinabay'
 			</div>
 		</form>
 	</div>
-
-
-	<footer>Copyright &copy; 2014 JavaJam Coffee House
-	<br>
-	<a href="mailto:shaunyong9@gmail.com">shaunyong9@gmail.com</a>
-	</footer>
 
 </body>
 </html>

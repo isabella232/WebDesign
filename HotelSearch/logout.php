@@ -12,7 +12,7 @@
 <?php
   if (!empty($old_user))
   {
-    echo 'Logged out.<br />';
+    echo 'Logged out.<br/>';
   }
   else
   {

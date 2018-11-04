@@ -1,5 +1,5 @@
 <?php
-@$dbcnx = new mysqli('localhost', 'root', '', 'hotel_search');
+@$dbcnx = new mysqli('localhost', 'root', '', 'user_management');
 // @ to ignore error message display //
 if ($dbcnx->connect_error){
 	echo "Database is not online";

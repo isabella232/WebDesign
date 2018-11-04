@@ -7,14 +7,6 @@ if (isset($_POST['email_val']) && isset($_POST['password_val']))
   // if the user has just tried to log in
   $email = $_POST['email_val'];
   $password = $_POST['password_val'];
-/*
-  $db_conn = new mysqli('localhost', 'webauth', 'webauth', 'auth');
-
-  if (mysqli_connect_errno()) {
-   echo 'Connection to database failed:'.mysqli_connect_error();
-   exit();
-  }
-*/
 	$password = md5($password);
   $query = 'select * from users '
            ."where email='$email' "
@@ -26,6 +18,7 @@ if (isset($_POST['email_val']) && isset($_POST['password_val']))
     // if they are in the database register the user id
 		$user =  $result->fetch_assoc();
     $_SESSION['valid_user'] = $user['username'];
+    $_SESSION['valid_email'] = $user['email'];
   }
   $dbcnx->close();
 }
@@ -42,6 +35,7 @@ if(isset($_SESSION['success_register']))
 	    // if they are in the database register the user id
 			$user =  $result->fetch_assoc();
 	    $_SESSION['valid_user'] = $user['username'];
+      $_SESSION['valid_email'] = $user['email'];
 	  }
 	  $dbcnx->close();
 }
@@ -319,8 +313,8 @@ if(isset($_SESSION['success_register']))
 				{
 			 ?>
         <ul class="tab-group">
-          <li><a href="#" id="signup_button" onclick="openCity(event, 'signup');" class="tab">Sign Up</a></li>
-          <li><a href="#" id="login_button" onclick="openCity(event, 'login');"  class="tab"> Log In</a></li>
+          <li><a href="#" id="signup_button" onclick="openTab(event, 'signup');" class="tab">Sign Up</a></li>
+          <li><a href="#" id="login_button" onclick="openTab(event, 'login');"  class="tab"> Log In</a></li>
         </ul>
         <!-- <div class="tab-content"> -->
           <div id="signup" class="tab-content">
@@ -401,56 +395,6 @@ if(isset($_SESSION['success_register']))
       </div> <!-- /form -->
 			<?php } ?>
 	</section><!--  end hero section  -->
-
-	<footer>
-		<div class="wrapper footer">
-			<ul>
-				<li class="links">
-					<ul>
-						<li><a href="#">About</a></li>
-						<li><a href="#">Support</a></li>
-						<li><a href="#">Terms</a></li>
-						<li><a href="#">Policy</a></li>
-						<li><a href="#">Contact</a></li>
-					</ul>
-				</li>
-
-				<li class="links">
-					<ul>
-						<li><a href="#">Appartements</a></li>
-						<li><a href="#">Houses</a></li>
-						<li><a href="#">Villas</a></li>
-						<li><a href="#">Mansions</a></li>
-						<li><a href="#">...</a></li>
-					</ul>
-				</li>
-
-				<li class="links">
-					<ul>
-						<li><a href="#">New York</a></li>
-						<li><a href="#">Los Anglos</a></li>
-						<li><a href="#">Miami</a></li>
-						<li><a href="#">Washington</a></li>
-						<li><a href="#">...</a></li>
-					</ul>
-				</li>
-
-				<li class="about">
-					<p>La Casa is real estate minimal html5 website template, designed and coded by pixelhint, tellus varius, dictum erat vel, maximus tellus. Sed vitae auctor ipsum</p>
-					<ul>
-						<li><a href="http://facebook.com/pixelhint" class="facebook" target="_blank"></a></li>
-						<li><a href="http://twitter.com/pixelhint" class="twitter" target="_blank"></a></li>
-						<li><a href="http://plus.google.com/+Pixelhint" class="google" target="_blank"></a></li>
-						<li><a href="#" class="skype"></a></li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-
-		<div class="copyrights wrapper">
-			Copyright © 2015 <a href="http://pixelhint.com" target="_blank" class="ph_link" title="Download more free Templates">Pixelhint.com</a>. All Rights Reserved.
-		</div>
-	</footer><!--  end footer  -->
 
 </body>
 </html>

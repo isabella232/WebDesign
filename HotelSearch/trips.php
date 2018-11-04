@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "dbconnect.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,12 +10,7 @@ session_start();
 	<meta name="author" content="pixelhint.com">
 	<!-- <meta name="description" content="La casa free real state fully responsive html5/css3 home page website template"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" /> -->
-
-	<link rel="stylesheet" type="text/css" href="css/reset.css">
-	<link rel="stylesheet" type="text/css" href="css/responsive.css">
-
-	<script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/main.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
   <style>
 	#leftcolumn { float: left;
 		          width: 200px;
@@ -85,7 +81,7 @@ session_start();
 
   .newlistings ul.trips_list li{
       display: block;
-      width: 340px;
+      width: 300px;
       height: auto;
       position: relative;
       float: left;
@@ -123,7 +119,7 @@ session_start();
   }
 
   .newlistings ul li .trip_details{
-      width: 298px;
+      width: 258px;
       padding: 10px 20px 14px 20px;
       border-bottom: 1px solid #f2f1f1;
       border-left: 1px solid #f2f1f1;
@@ -166,12 +162,6 @@ session_start();
       color: #676767;
   }
 
-  .newlistings .more_listing{
-      display: block;
-      width: 100%;
-      text-align: center;
-      margin: 84px 0 22px 0;
-  }
   </style>
 </head>
 <body>
@@ -219,152 +209,102 @@ session_start();
 
   <section class="newlistings">
     <div class="wrapper">
-      <h2>Upcoming Trips</h2>
+			<?php
+			if(isset($_SESSION["operation"]))
+			{
+				if($_SESSION["operation"] == "book")
+				{
+					?>
+					<h2> New Booking Confirmed!!</h2>
+					<?php
+				}
+				if($_SESSION["operation"] == "cancel")
+				{
+					?>
+					<h2> Booking Has Been Cancelled.</h2>
+					<?php
+				}
+				if($_SESSION["operation"] == "rate")
+				{
+					?>
+					<h2> Thanks For Rating!!</h2>
+					<?php
+				}
+				unset($_SESSION["operation"]);
+			}
+			 ?>
+			 <div class="card">
+				 <div class="content">
+					<h2>Upcoming Trips</h2>
 
-      <ul class="trips_list">
-        <li>
-          <a href="rate.php">
-            <img src="img/Marinabay.jpg" alt="" title="" class="property_img"/>
-          </a>
-          <div class="trip_details">
-            <h1>
-              <a href="#">Bencoolen Hotel</a>
-            </h1>
-            <h1>
-              Jul 01-08, 2020 | 4 guests
-            </h1>
-            <h1>
-              <a href="rate.php">Go to Rate</a>
-            </h1>
-          </div>
-        </li>
-
-
-      </ul>
-
-      <h2>Past Trips</h2>
-      <ul class="trips_list">
-        <li>
-          <a href="rate.php">
-            <img src="img/Marinabay.jpg" alt="" title="" class="property_img"/>
-          </a>
-          <div class="trip_details">
-						<h1>
-							<a href="#">Bencoolen Hotel</a>
-						</h1>
-            <h1>
-              Jul 01-08, 2020 | 4 guests
-            </h1>
-            <h1>
-              <a href="rate.php">Go to Rate</a>
-            </h1>
-					</div>
-        </li>
-
-        <li>
-          <a href="rate.php">
-            <img src="img/Marinabay.jpg" alt="" title="" class="property_img"/>
-          </a>
-          <div class="trip_details">
-						<h1>
-							<a href="#">Bencoolen Hotel</a>
-						</h1>
-            <h1>
-              Jul 01-08, 2020 | 4 guests
-            </h1>
-            <h1>
-              <a href="rate.php">Go to Rate</a>
-            </h1>
-					</div>
-        </li>
-
-        <li>
-          <a href="rate.php">
-            <img src="img/Marinabay.jpg" alt="" title="" class="property_img"/>
-          </a>
-          <div class="trip_details">
-						<h1>
-							<a href="#">Bencoolen Hotel</a>
-						</h1>
-            <h1>
-              Jul 01-08, 2020 | 4 guests
-            </h1>
-            <h1>
-              <a href="rate.php">Go to Rate</a>
-            </h1>
-					</div>
-        </li>
+					<ul class="trips_list">
+					<?php
+					$today= new DateTime('today');
+					$today =$today->format('Y-m-d');
+					$user = $_SESSION['valid_user'];
+					$query = "SELECT * FROM trips LEFT JOIN hotel_search ON trips.hotel= hotel_search.hotelname WHERE username  LIKE '%$user%' AND check_in >='$today'";
+					 $result = mysqli_query($dbcnx,$query);
+					 while ($row = $result->fetch_assoc()) {
+					 ?>
+		        <li>
+		          <a href="booking_detail.php?booking_id=<?php echo $row['id'];?>">
+		            <img src="img/<?php echo $row['pic_link'] ?>" alt="" title="" class="property_img"/>
+		          </a>
+		          <div class="trip_details">
+		            <h1>
+		              <a href="#"><?php echo $row['hotel'] ?></a>
+		            </h1>
+		            <h1>
+		              <?php echo $row['check_in'] ?> to <?php echo $row['check_out'] ?> | <?php echo $row['people'] ?> guests
+		            </h1>
+		            <h1>
+		              <a href="confirm_cancel.php?booking_id=<?php echo $row['id'];?>">Cancle</a>
+		            </h1>
+		          </div>
+		        </li>
+					<?php } ?>
 
 
-        <li>
-          <a href="rate.php">
-            <img src="img/Marinabay.jpg" alt="" title="" class="property_img"/>
-          </a>
-          <div class="trip_details">
-						<h1>
-							<a href="#">Bencoolen Hotel</a>
-						</h1>
-            <h1>
-              Jul 01-08, 2020 | 4 guests
-            </h1>
-            <h1>
-              <a href="rate.php">Go to Rate</a>
-            </h1>
-					</div>
-        </li>
+		      </ul>
+				</div>
+			</div>
+			<div class="card">
+				<div class="content">
 
-      </ul>
+		      <h2>Past Trips</h2>
+		      <ul class="trips_list">
+						<?php
+						$today= new DateTime('today');
+						$today =$today->format('Y-m-d');
+						$user = $_SESSION['valid_user'];
+						$query = "SELECT * FROM trips LEFT JOIN hotel_search ON trips.hotel= hotel_search.hotelname WHERE username  LIKE '%$user%' AND check_in <'$today'";
+						 $result = mysqli_query($dbcnx,$query);
+						 while ($row = $result->fetch_assoc()) {
+						 ?>
+			        <li>
+			          <a href="booking_detail.php?booking_id=<?php echo $row['id']; ?>">
+			            <img src="img/<?php echo $row['pic_link'] ?>" alt="" title="" class="property_img"/>
+			          </a>
+			          <div class="trip_details">
+			            <h1>
+			              <a href="#"><?php echo $row['hotel'] ?></a>
+			            </h1>
+			            <h1>
+			              <?php echo $row['check_in'] ?> to <?php echo $row['check_out'] ?> | <?php echo $row['people'] ?> guests
+			            </h1>
+			            <h1>
+										<?php if($row['reviewed'] == 0){ ?>
+			              <a href="rate.php?booking_id=<?php echo $row['id']; ?>"><h3>Go to Rate</h3></a>
+									<?php } else echo "<h3>Rated</h3>"?>
+			            </h1>
+			          </div>
+			        </li>
+						<?php } ?>
+		      </ul>
+				</div>
+			</div>
     </div>
   </section>
-	<footer>
-		<div class="wrapper footer">
-			<ul>
-				<li class="links">
-					<ul>
-						<li><a href="#">About</a></li>
-						<li><a href="#">Support</a></li>
-						<li><a href="#">Terms</a></li>
-						<li><a href="#">Policy</a></li>
-						<li><a href="#">Contact</a></li>
-					</ul>
-				</li>
-
-				<li class="links">
-					<ul>
-						<li><a href="#">Appartements</a></li>
-						<li><a href="#">Houses</a></li>
-						<li><a href="#">Villas</a></li>
-						<li><a href="#">Mansions</a></li>
-						<li><a href="#">...</a></li>
-					</ul>
-				</li>
-
-				<li class="links">
-					<ul>
-						<li><a href="#">New York</a></li>
-						<li><a href="#">Los Anglos</a></li>
-						<li><a href="#">Miami</a></li>
-						<li><a href="#">Washington</a></li>
-						<li><a href="#">...</a></li>
-					</ul>
-				</li>
-
-				<li class="about">
-					<p>La Casa is real estate minimal html5 website template, designed and coded by pixelhint, tellus varius, dictum erat vel, maximus tellus. Sed vitae auctor ipsum</p>
-					<ul>
-						<li><a href="http://facebook.com/pixelhint" class="facebook" target="_blank"></a></li>
-						<li><a href="http://twitter.com/pixelhint" class="twitter" target="_blank"></a></li>
-						<li><a href="http://plus.google.com/+Pixelhint" class="google" target="_blank"></a></li>
-						<li><a href="#" class="skype"></a></li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-
-		<div class="copyrights wrapper">
-			Copyright © 2015 <a href="http://pixelhint.com" target="_blank" class="ph_link" title="Download more free Templates">Pixelhint.com</a>. All Rights Reserved.
-		</div>
-	</footer><!--  end footer  -->
 
 </body>
 </html>
