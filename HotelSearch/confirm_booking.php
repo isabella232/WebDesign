@@ -79,7 +79,6 @@ $hotel_info = $result->fetch_assoc();
 				<div class="card">
 					<div class="content">
 						<h2> Trip details</h2>
-						<h4>Confirmation Code: <?php echo $booking_id ?></h4>
 						<h4>Full Name: <?php echo $_SESSION['valid_user'] ?></h4>
 						<h4>Email: <?php echo $_SESSION['valid_email'] ?></h4>
 						<h4>Check In Date: <?php echo $check_in_date ?></h4>
