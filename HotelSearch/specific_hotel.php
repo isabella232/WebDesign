@@ -23,6 +23,8 @@ $period = (int)date_diff(date_create($check_in_date), date_create($check_out_dat
 $specific_hotel = $_GET['hotel_name'];
 $today = new DateTime('today');
 $today = $today->format('Y-m-d');
+$tomorrow = new DateTime('tomorrow');
+$tomorrow =$tomorrow->format('Y-m-d');
 
 $result = mysqli_query($dbcnx,"SELECT * FROM hotel_search WHERE hotelname  LIKE '%$specific_hotel%'");
 $hotel_info = $result->fetch_assoc();
@@ -142,7 +144,7 @@ if($single_availability < $default_single)
 					</div>
 					<input name="check_in_date" value="<?php echo $check_in_date; ?>" type="text" class="float" min="<?php echo $today; ?>" id="check_in_date" onfocus="(this.type='date')" onblur="(this.type='text')" onchange="update_check_out_min();" autocomplete="off" >
 					<hr class="field_sep float"/>
-					<input name="check_out_date" value="<?php echo $check_out_date; ?>" type="text" class="float" id="check_out_date" onfocus="(this.type='date')" onblur="(this.type='text')" autocomplete="off" >
+					<input name="check_out_date" value="<?php echo $check_out_date; ?>" type="text" class="float" min="<?php echo $tomorrow; ?>"  id="check_out_date" onfocus="(this.type='date')" onblur="(this.type='text')" autocomplete="off" >
 				</form>
 			</div>
 		</div>

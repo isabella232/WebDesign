@@ -5,6 +5,8 @@ session_start();
 include "dbconnect.php";
 $today = new DateTime('today');
 $today = $today->format('Y-m-d');
+$tomorrow = new DateTime('tomorrow');
+$tomorrow =$tomorrow->format('Y-m-d');
 ?>
 
 <head>
@@ -72,7 +74,7 @@ $today = $today->format('Y-m-d');
 					</div>
 					<input name="check_in_date" placeholder="Check In Date" type="text" min="<?php echo $today; ?>" class="float" id="check_in_date" onfocus="(this.type='date')" onblur="(this.type='text')"	onchange="update_check_out_min();" autocomplete="off" >
 					<hr class="field_sep float"/>
-					<input name="check_out_date" placeholder="Check Out Date" type="text" class="float" id="check_out_date" onfocus="(this.type='date')" onblur="(this.type='text')" autocomplete="off" >
+					<input name="check_out_date" placeholder="Check Out Date" type="text" min="<?php echo $tomorrow; ?>" class="float" id="check_out_date" onfocus="(this.type='date')" onblur="(this.type='text')" autocomplete="off" >
 				</form>
 			</div>
 		</div>

@@ -33,6 +33,8 @@ $default_double = floor($people_count/2);
 $period = (int)date_diff(date_create($check_in_date), date_create($check_out_date))->format("%R%a");
 $today = new DateTime('today');
 $today = $today->format('Y-m-d');
+$tomorrow = new DateTime('tomorrow');
+$tomorrow =$tomorrow->format('Y-m-d');
 
 $high_level_query = "select * from hotel_search where (location like '%$location%' or hotelname like '%$location%')";
 $low_level_query  ="";
@@ -121,7 +123,7 @@ $query = $high_level_query.$low_level_query;
 					</div>
 					<input name="check_in_date" value="<?php echo $check_in_date; ?>" min="<?php echo $today; ?>" type="text" class="float" id="check_in_date" onfocus="(this.type='date')" onblur="(this.type='text')" onchange="update_check_out_min();" autocomplete="off" >
 					<hr class="field_sep float"/>
-					<input name="check_out_date" value="<?php echo $check_out_date; ?>" type="text" class="float" id="check_out_date" onfocus="(this.type='date')" onblur="(this.type='text')" autocomplete="off" >
+					<input name="check_out_date" value="<?php echo $check_out_date; ?>" min="<?php echo $tomorrow; ?>"  type="text" class="float" id="check_out_date" onfocus="(this.type='date')" onblur="(this.type='text')" autocomplete="off" >
 				</form>
 			</div>
 		</div>
