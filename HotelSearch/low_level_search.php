@@ -176,10 +176,10 @@ $query = $high_level_query.$low_level_query;
       <div id="rightcolumn">
         <div class="card">
           <div class="content">
+          <?php $result = mysqli_query($dbcnx,$query); ?>
+          <h1><?php echo strtoupper($location); ?>: <?php echo $result->num_rows ?> properties found</h1>
           <section class="listings low_level">
               <ul class="properties_list">
-                <?php $result = mysqli_query($dbcnx,$query); ?>
-                <h1><?php echo strtoupper($location); ?>: <?php echo $result->num_rows ?> properties found</h1>
                 <!-- interate through hotels and show an brief view of each of them -->
                 <?php
                 while ($row = $result->fetch_assoc()) {
