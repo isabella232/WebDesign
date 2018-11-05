@@ -21,34 +21,16 @@ $hotel_info = $result->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<title>Hotel Search Portal</title>
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-  <style>
-	#leftcolumn {
-		float: left;
-    width: 25%;
-		padding-top: 50px;
-		padding-bottom: 60px;
-	}
-	#rightcolumn {
-		float: left;
-    width: 75%;
-		padding-top: 50px;
-		padding-bottom: 60px;
-	}
-  </style>
-</head>
-<body>
-
-
-
-
-		<section class="shorthero">
+	<head>
+		<title>Hotel Search Portal</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+	</head>
+	<body>
+		<section class="short_color hero">
 			<header>
 				<div class="wrapper">
-					<a href="#"><img src="img/letter-s.png" height="50px" width="50px" class="logo" alt="" title=""/></a>
+					<a href="index.php"><img src="img/letter-s.png" class="logo" alt="" title=""/></a>
 					<nav>
 						<ul>
 							<li><a href="index.php">Home</a></li>
@@ -67,8 +49,8 @@ $hotel_info = $result->fetch_assoc();
 							<?php }
 							else{
 							?>
-							<li><a href="login.php">Login</a></li>
-							<li><a href="login.php">Sign Up</a></li>
+							<li><a href="login.php?type=log_in">Login</a></li>
+							<li><a href="login.php?type=sign_up">Sign up</a></li>
 							<?php }
 							?>
 						</ul>
@@ -146,6 +128,12 @@ $hotel_info = $result->fetch_assoc();
 				</div>
 			</div>
 		</div>
+	</body>
 
-</body>
+	<footer>
+		Copyright &copy; 2018 Hotel Search Portal
+	  <br>
+	  <a href="mailto:ren@jiawei.com">ren@jiawei.com</a> <a href="mailto:shaun@yong.com">shaun@yong.com</a>
+	</footer>
+
 </html>

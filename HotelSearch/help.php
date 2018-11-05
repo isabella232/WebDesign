@@ -1,66 +1,14 @@
+<?php
+session_start();
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<title>Hotel Search Portal</title>
 	<meta charset="utf-8">
-	<meta name="author" content="pixelhint.com">
-	<!-- <meta name="description" content="La casa free real state fully responsive html5/css3 home page website template"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" /> -->
+	<link rel="stylesheet" type="text/css" href="css/main.css">
 
-	<link rel="stylesheet" type="text/css" href="css/reset.css">
-	<link rel="stylesheet" type="text/css" href="css/responsive.css">
-
-	<script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/main.js"></script>
   <style>
-
-  /*  Hero Section  */
-
-  .contacthero{
-      width: 100%;
-      height: 400px;
-      position: relative;
-      background: url('img/laptop_dark_blur.jpg') no-repeat bottom center;
-      /* background-color:  #95badf; */
-      background-size: cover;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-  }
-
-  .contacthero .caption{
-    /* width: 1100px;
-    margin: 0 auto;
-    position: relative; */
-      width: 100%;
-      position: absolute;
-      text-align: center;
-      top: 40%;
-      /* margin-top: -105px; */
-      z-index: 10;
-  }
-
-  .contacthero .caption h2{
-      color: #fff;
-      font-family: "p22_corinthia", Helvetica, Arial, sans-serif;
-      /* font-family: "lato-regular", Helvetica, Arial, sans-serif; */
-      font-size: 100px;
-      font-weight: lighter;
-      margin: 20px;
-      position: relative;
-      display: block;
-  }
-
-  .contacthero .caption h3{
-      color: #fff;
-      font-family: "lato-regular", Helvetica, Arial, sans-serif;
-      font-size: 14px;
-      margin: -15px 0 0 25px;
-      left: 1px;
-  }
-
-
-
   i {
       border: solid white;
       border-width: 0 10px 10px 0;
@@ -120,54 +68,47 @@
   .btn:hover:after {
     height: 100%;
   }
-
-  .details h1{
-    color: #000000;
-    margin:50px 0;
-  }
-  .details p{
-    color: #626262;
-    font-family: "lato-regular", Helvetica, Arial, sans-serif;
-    letter-spacing: 1px;
-    line-height: 20px;
-    margin:50px 0;
-  }
   </style>
 </head>
 <body>
 
-
-	<section class="contacthero">
+	<section class="help_page hero">
 		<header>
-			<div class="wrapper">
-				<a href="#"><img src="img/letter-s.png" height="50px" width="50px" class="logo" alt="" title=""/></a>
-				<nav>
-					<ul>
-						<li><a href="index.php">Home</a></li>
-						<li><a href="#">Rate</a></li>
-						<li><a href="#">Contact Us</a></li>
-						<li><a href="#">Login</a></li>
-						<li><a href="#">Sign Up</a></li>
-					</ul>
-				</nav>
-			</div>
-		</header><!--  end header section  -->
-
-
+  		<div class="wrapper">
+  			<a href="index.php"><img src="img/letter-s.png" height="50px" width="50px" class="logo" alt="" title=""/></a>
+  			<nav>
+  				<ul>
+  					<li><a href="index.php">Home</a></li>
+  					<li><a href="trips.php">Trips</a></li>
+  					<li><a href="help.php">Help</a></li>
+  					<?php
+  					if (isset($_SESSION['valid_user']))
+  					{
+  					?>
+  					<li><a href="#">
+  						<b>
+  						<?php echo $_SESSION['valid_user']  ?>
+  						</b>
+  					</a></li>
+  					<li><a href="logout.php">Log out</a></li>
+  					<?php }
+  					else{
+  					?>
+  					<li><a href="login.php?type=log_in">Login</a></li>
+  					<li><a href="login.php?type=sign_up">Sign up</a></li>
+  					<?php }
+  					?>
+  				</ul>
+  			</nav>
+  		</div>
+	  </header><!--  end header section  -->
     <section class="caption">
       <h2 class="caption">Help</h2>
-      <h3 class="properties">Questions? You’re in the right place.</h3>
-
     </section>
-
-
 	</section><!--  end hero section  -->
 
+
 	<div class="wrapper" >
-    <!-- <input type="button" value="Getting Started"></input>
-    <input type="button" value="Booking"></input>
-    <input type="button" value="Payment"></input>
-    <input type="button" value="Your trips"></input> -->
     <a href="#started"><button class="btn">Getting Started</button></a>
     <a href="#booking"><button class="btn">Booking</button></a>
     <a href="#payment"><button class="btn">Payment</button></a>
@@ -203,7 +144,10 @@
       </div>
     </div>
 	</div>
-
-
 </body>
+<footer>
+  Copyright &copy; 2018 Hotel Search Portal
+  <br>
+  <a href="mailto:ren@jiawei.com">ren@jiawei.com</a> <a href="mailto:shaun@yong.com">shaun@yong.com</a>
+</footer>
 </html>

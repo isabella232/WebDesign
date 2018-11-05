@@ -1,14 +1,13 @@
 <?php
 include "dbconnect.php";
 session_start();
-
 if(!isset($_SESSION['check_in_date']) || empty($_SESSION['check_in_date']))
 {
     $_SESSION['check_in_date'] = new DateTime('today');
     $_SESSION['check_in_date'] =$_SESSION['check_in_date']->format('Y/m/d');
 }
 
-if(!isset($_SESSION["check_out_date"]) || !empty($_SESSION["check_out_date"]))
+if(!isset($_SESSION["check_out_date"]) || empty($_SESSION["check_out_date"]))
 {
     $_SESSION['check_out_date'] = new DateTime('tomorrow');
     $_SESSION['check_out_date'] =$_SESSION['check_out_date']->format('Y/m/d');
@@ -22,6 +21,8 @@ $check_out_date = $_SESSION['check_out_date'];
 $people_count = $_SESSION['people_count'];
 $period = (int)date_diff(date_create($check_in_date), date_create($check_out_date))->format("%R%a");
 $specific_hotel = $_GET['hotel_name'];
+$today = new DateTime('today');
+$today = $today->format('Y-m-d');
 
 $result = mysqli_query($dbcnx,"SELECT * FROM hotel_search WHERE hotelname  LIKE '%$specific_hotel%'");
 $hotel_info = $result->fetch_assoc();
@@ -66,7 +67,7 @@ if($single_availability < $default_single)
 	<title>Hotel Search Portal</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-  <script type="text/javascript" src="js/specific_hotel.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
   <style>
 	#leftcolumn {
 		float: left;
@@ -85,10 +86,10 @@ if($single_availability < $default_single)
 <body>
 
 
-	<section class="shorthero">
+	<section class="short_color hero">
 		<header>
 			<div class="wrapper">
-				<a href="#"><img src="img/letter-s.png" height="50px" width="50px" class="logo" alt="" title=""/></a>
+				<a href="index.php"><img src="img/letter-s.png" class="logo" alt="" title=""/></a>
 				<nav>
 					<ul>
 						<li><a href="index.php">Home</a></li>
@@ -107,8 +108,8 @@ if($single_availability < $default_single)
 						<?php }
 						else{
 						?>
-						<li><a href="login.php">Login</a></li>
-						<li><a href="login.php">Sign Up</a></li>
+						<li><a href="login.php?type=log_in">Login</a></li>
+						<li><a href="login.php?type=sign_up">Sign up</a></li>
 						<?php }
 						?>
 					</ul>
@@ -123,7 +124,7 @@ if($single_availability < $default_single)
 			<div class="wrapper">
 				<form action="low_level_search.php" method="post">
 					<div class="search_fields">
-						<input class="float" type="text" id="keywords" name="location" value="<?php echo $specific_hotel; ?>"  autocomplete="off">
+						<input class="float" type="text" id="keywords" pattern="^[a-zA-Z0-9 ]*$" title="Only letters and numbers" name="location" value="<?php echo $specific_hotel; ?>"  autocomplete="off">
 						<hr class="field_sep float"/>
 						<select class="float" name="people_count" id="count">
 							<?php
@@ -139,7 +140,7 @@ if($single_availability < $default_single)
 						<hr class="field_sep float"/>
 						<input type="submit"  id ="submit_search" class = "float" name="submit_search" value="Search &#8594;"/>
 					</div>
-					<input name="check_in_date" value="<?php echo $check_in_date; ?>" type="text" class="float" id="check_in_date" onfocus="(this.type='date')" onblur="(this.type='text')" autocomplete="off" >
+					<input name="check_in_date" value="<?php echo $check_in_date; ?>" type="text" class="float" min="<?php echo $today; ?>" id="check_in_date" onfocus="(this.type='date')" onblur="(this.type='text')" onchange="update_check_out_min();" autocomplete="off" >
 					<hr class="field_sep float"/>
 					<input name="check_out_date" value="<?php echo $check_out_date; ?>" type="text" class="float" id="check_out_date" onfocus="(this.type='date')" onblur="(this.type='text')" autocomplete="off" >
 				</form>
@@ -270,6 +271,10 @@ if($single_availability < $default_single)
 		</section>
 	</div>
 </div>
-
 </body>
+<footer>
+  Copyright &copy; 2018 Hotel Search Portal
+  <br>
+  <a href="mailto:ren@jiawei.com">ren@jiawei.com</a> <a href="mailto:shaun@yong.com">shaun@yong.com</a>
+</footer>
 </html>

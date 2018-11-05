@@ -1,176 +1,26 @@
 <?php
 session_start();
 include "dbconnect.php";
+if(!isset($_SESSION['valid_user']))
+{
+	$_SESSION['redirect'] = "Location: trips.php";
+	header('Location: login.php');
+}
+else
+{
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<title>Hotel Search Portal</title>
 	<meta charset="utf-8">
-	<meta name="author" content="pixelhint.com">
-	<!-- <meta name="description" content="La casa free real state fully responsive html5/css3 home page website template"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" /> -->
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-  <style>
-	#leftcolumn { float: left;
-		          width: 200px;
-							padding-top: 50px;
-							padding-bottom: 60px;
-	}
-	#rightcolumn { margin-left: 200px;
-		padding-top: 50px;
-		padding-bottom: 60px;
-	}
-
-	/*  Hero Section  */
-
-
-	  .newhero{
-	      width: 100%;
-	      height: 400px;
-	      position: relative;
-	      background: url('img/night_hotel.jpg') no-repeat bottom center;
-	      /* background-color:  #95badf; */
-	      background-size: cover;
-	      -webkit-background-size: cover;
-	      -moz-background-size: cover;
-	      -o-background-size: cover;
-	  }
-
-	  .newhero .caption{
-	    /* width: 1100px;
-	    margin: 0 auto;
-	    position: relative; */
-	      width: 100%;
-	      position: absolute;
-	      text-align: center;
-	      top: 40%;
-	      /* margin-top: -105px; */
-	      z-index: 10;
-	  }
-
-	  .newhero .caption h2{
-	      color: #fff;
-	      font-family: "p22_corinthia", Helvetica, Arial, sans-serif;
-	      /* font-family: "lato-regular", Helvetica, Arial, sans-serif; */
-	      font-size: 100px;
-	      font-weight: lighter;
-	      margin: 20px;
-	      position: relative;
-	      display: block;
-	  }
-
-	  .newhero .caption h3{
-	      color: #fff;
-	      font-family: "lato-regular", Helvetica, Arial, sans-serif;
-	      font-size: 14px;
-	      margin: -15px 0 0 25px;
-	      left: 1px;
-	  }
-
-
-  /*  listings section  */
-  .newlistings{
-      padding: 50px 0 100px 0;
-  }
-
-  .newlistings ul.trips_list{
-      list-style: none;
-      overflow: hidden;
-  }
-
-  .newlistings ul.trips_list li{
-      display: block;
-      width: 300px;
-      height: auto;
-      position: relative;
-      float: left;
-      margin: 0 40px 40px 0;
-  }
-
-  .newlistings ul.trips_list li img.property_img{
-      width: 100%;
-      height: auto!important;
-      vertical-align: top;
-  }
-
-
-  .newlistings ul.trips_list li .price{
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      padding: 15px 20px;
-      background: #ffffff;
-      color: #514d4d;
-      font-family: "lato-bold", Helvetica, Arial, sans-serif;
-      font-size: 16px;
-      font-weight: bold;
-      letter-spacing: 1px;
-
-      border-radius: 2px;
-      -webkit-border-radius: 2px;
-      -moz-border-radius: 2px;
-      -o-border-radius: 2px;
-  }
-
-
-  .newlistings ul.trips_list li:nth-child(3n+0){
-      margin-right: 0;
-  }
-
-  .newlistings ul li .trip_details{
-      width: 258px;
-      padding: 10px 20px 14px 20px;
-      border-bottom: 1px solid #f2f1f1;
-      border-left: 1px solid #f2f1f1;
-      border-right: 1px solid #f2f1f1;
-
-      transition: all .2s linear;
-      -webkit-transition: all .2s linear;
-      -moz-transition: all .2s linear;
-      -o-transition: all .2s linear;
-  }
-
-  .newlistings ul li:hover .trip_details{
-      border-bottom: 1px solid #95badf;
-      border-left: 1px solid #95badf;
-      border-right: 1px solid #95badf;
-  }
-
-  .newlistings ul li .trip_details h1{
-      color: #666464;
-      font-family: "lato-bold", Helvetica, Arial, sans-serif;
-      font-size: 16px!important;
-      font-weight: bold;
-      margin-bottom: 5px;
-      line-height: 28px;
-  }
-
-  .newlistings ul li .trip_details h1 a{
-      text-decoration: none;
-      color: #666464;
-  }
-
-  .newlistings ul li .trip_details h2{
-      color: #9d9d9d;
-      font-family: "lato-regular", Helvetica, Arial, sans-serif;
-      font-size: 12px;
-      line-height: 26px;
-  }
-
-  .newlistings ul li .trip_details .property_size{
-      color: #676767;
-  }
-
-  </style>
 </head>
 <body>
-
-
-	<section class="newhero">
+	<section class="short_background hero">
 		<header>
 			<div class="wrapper">
-				<a href="#"><img src="img/letter-s.png" height="50px" width="50px" class="logo" alt="" title=""/></a>
+				<a href="index.php"><img src="img/letter-s.png" height="50px" width="50px" class="logo" alt="" title=""/></a>
 				<nav>
 					<ul>
 						<li><a href="index.php">Home</a></li>
@@ -189,8 +39,8 @@ include "dbconnect.php";
 						<?php }
 						else{
 						?>
-						<li><a href="login.php">Login</a></li>
-						<li><a href="login.php">Sign Up</a></li>
+						<li><a href="login.php?type=log_in">Login</a></li>
+						<li><a href="login.php?type=sign_up">Sign Up</a></li>
 						<?php }
 						?>
 					</ul>
@@ -200,42 +50,49 @@ include "dbconnect.php";
 
 		<section class="caption">
       <h2 class="caption">Trips</h2>
-      <h3 class="properties">Here are your adventures.</h3>
 
     </section>
-
-
 	</section><!--  end hero section  -->
 
-  <section class="newlistings">
+  <section class="triplistings">
     <div class="wrapper">
 			<?php
 			if(isset($_SESSION["operation"]))
 			{
-				if($_SESSION["operation"] == "book")
-				{
-					?>
-					<h2> New Booking Confirmed!!</h2>
-					<?php
-				}
-				if($_SESSION["operation"] == "cancel")
-				{
-					?>
-					<h2> Booking Has Been Cancelled.</h2>
-					<?php
-				}
-				if($_SESSION["operation"] == "rate")
-				{
-					?>
-					<h2> Thanks For Rating!!</h2>
-					<?php
-				}
-				unset($_SESSION["operation"]);
+				?>
+				<div class="card">
+					<div class="content">
+						<?php
+						if($_SESSION["operation"] == "book")
+						{
+							?>
+							<h2 style="text-align:center;"> New Booking Confirmed!!</h2>
+							<h3 style="text-align:center;"> We have dropped you an email. Check your trip out in Upcoming Trips.</h3>
+							<?php
+						}
+						if($_SESSION["operation"] == "cancel")
+						{
+							?>
+							<h2 style="text-align:center;"> Booking Has Been Cancelled</h2>
+							<h3 style="text-align:center;"> We have dropped you an email.</h3>
+							<?php
+						}
+						if($_SESSION["operation"] == "rate")
+						{
+							?>
+							<h2 style="text-align:center;"> Thanks For Rating!!</h2>
+							<?php
+						}
+						unset($_SESSION["operation"]);
+						?>
+					</div>
+				</div>
+						<?php
 			}
 			 ?>
 			 <div class="card">
 				 <div class="content">
-					<h2>Upcoming Trips</h2>
+					<h2 style="text-align:center;">Upcoming Trips</h2>
 
 					<ul class="trips_list">
 					<?php
@@ -270,8 +127,7 @@ include "dbconnect.php";
 			</div>
 			<div class="card">
 				<div class="content">
-
-		      <h2>Past Trips</h2>
+		      <h2 style="text-align:center;">Past Trips</h2>
 		      <ul class="trips_list">
 						<?php
 						$today= new DateTime('today');
@@ -294,8 +150,8 @@ include "dbconnect.php";
 			            </h1>
 			            <h1>
 										<?php if($row['reviewed'] == 0){ ?>
-			              <a href="rate.php?booking_id=<?php echo $row['id']; ?>"><h3>Go to Rate</h3></a>
-									<?php } else echo "<h3>Rated</h3>"?>
+			              <a href="rate.php?booking_id=<?php echo $row['id']; ?>">Go to Rate</a>
+									<?php } else echo "Rated"?>
 			            </h1>
 			          </div>
 			        </li>
@@ -305,6 +161,13 @@ include "dbconnect.php";
 			</div>
     </div>
   </section>
-
 </body>
+<footer>
+	Copyright &copy; 2018 Hotel Search Portal
+	<br>
+	<a href="mailto:ren@jiawei.com">ren@jiawei.com</a> <a href="mailto:shaun@yong.com">shaun@yong.com</a>
+</footer>
 </html>
+<?php
+}
+?>

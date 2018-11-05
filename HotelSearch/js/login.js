@@ -17,3 +17,17 @@ function openTab(evt, tabName) {
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.className += " active";
 }
+
+function check_password()
+{
+  var password = document.getElementById('password').value;
+  var password2 = document.getElementById('password2').value;
+  if(password !== password2){
+    document.getElementById('submit_button').disabled = true;
+    document.getElementById('error_msg').innerHTML = "<h3 style='color:red;'>Password doesn't match</h3>";
+  }
+  else{
+        document.getElementById('submit_button').disabled = false;
+        document.getElementById('error_msg').innerHTML = "<h3 style='color:green;'>Password matches</h3>";
+  }
+}

@@ -19,5 +19,12 @@
 
   $result = $dbcnx->query($sql);
 
+  $to = "root@localhost";
+  $subject = "Booking Confirmation";
+  $message = "Your booking is successful! Confirmation code is '$hash'. ";
+  $headers = 'From: root@localhost'.'\r\n'.'Reply-To:root@localhost'.'\r\n'.'x-Mailer:PHP/'.phpversion();
+  mail($to, $subject,$message, $headers,'-froot@localhost');
+  echo ("mail sent to:".$to);
+
   header('Location: trips.php');
 ?>

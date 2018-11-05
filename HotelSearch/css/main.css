@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 /*  Fonts  */
 @font-face {
     font-family: 'lato-bold';
@@ -52,6 +45,8 @@
 /*  General CSS  */
 body{
     background: #fff;
+    margin: 0;
+
 }
 
 .wrapper{
@@ -88,11 +83,23 @@ h4,h5              { color: #000000; font-weight:normal;}
     *zoom: 1;
 }
 
+#leftcolumn {
+  float: left;
+  width: 25%;
+  padding-top: 50px;
+  padding-bottom: 60px;
+}
+#rightcolumn {
+  float: left;
+  width: 75%;
+  padding-top: 50px;
+  padding-bottom: 60px;
+}
 
 
 
 
-
+/* card section */
 
 .card {
   box-shadow: 0rem .5rem 1rem rgba(0,0,0,.3);
@@ -112,7 +119,6 @@ h4,h5              { color: #000000; font-weight:normal;}
 .content {
     padding: 2rem;
 }
-
 .content hr{
   border: none;
   height: 1px;
@@ -162,6 +168,8 @@ td {
   border-right: 1px solid #C1C3D1;
 }
 
+
+/* css for low_level_search */
 select {
   position: relative;
   display: block;
@@ -181,7 +189,7 @@ select {
 {
   padding-left: 5%;
   padding-right: 5%;
-  color: red;
+  color: #ff5a60;
 }
 
 .seperator
@@ -235,6 +243,8 @@ select {
   font-size: 12px;
   font-weight: bolder;
 }
+
+
 /*  header Section  */
 header{
     width: 100%;
@@ -243,7 +253,9 @@ header{
 }
 
 header .logo{
-    margin-top: 40px;
+    height: 60px;
+    width: 60px;
+    margin-top: 20px;
     float: left;
 }
 
@@ -293,18 +305,9 @@ header nav .login_btn:hover{
 }
 
 
-
-
+/* hero section */
 .hero{
-    width: 100%;
-    height: 800px;
-    position: relative;
-    background: url('../img/night_hotel.jpg') no-repeat bottom center;
-    /* background-color:  #95badf; */
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+        width: 100%;
 }
 
 .hero .caption{
@@ -338,18 +341,56 @@ header nav .login_btn:hover{
     left: 1px;
 }
 
-
-
-.shorthero{
-    width: 100%;
+.short_color{
     height: 100px;
     position: relative;
     /* background: url('../img/hero.jpg') no-repeat bottom center; */
-    background-color:  #95badf;
+    background-color: #95badf;
 }
 
+.short_background{
+    height: 400px;
+    position: relative;
+    background: url('../img/night_hotel.jpg') no-repeat bottom center;
+    /* background-color:  #95badf; */
+    background-size: cover;
+}
 
+.long_background{
+      background: url('../img/night_hotel.jpg') no-repeat bottom center;
+      height: 800px;
+      position: relative;
+      background-size: cover;
+}
 
+.full_background{
+  background: url('../img/blue_hotel.jpg') no-repeat bottom center;
+  height: 900px;
+  position: relative;
+  background-size: cover;
+}
+
+.help_page{
+  height: 400px;
+  position: relative;
+  background: url('../img/laptop_dark_blur_crop.jpg') no-repeat bottom center;
+  /* background-color:  #95badf; */
+  background-size: cover;
+}
+
+.details h1{
+  color: #000000;
+  margin:50px 0;
+}
+.details p{
+  color: #626262;
+  font-family: "lato-regular", Helvetica, Arial, sans-serif;
+  letter-spacing: 1px;
+  line-height: 20px;
+  margin:50px 0;
+}
+
+#more {display: none;}
 
 /*  Search Section  */
 
@@ -494,6 +535,93 @@ select {
     background: #b6d3f0;
 }
 
+
+
+
+/* review section */
+
+.review{
+    /* width: 100%; */
+    /* height: 100px; */
+    /* background: #bfd9f2; */
+    /* position: relative; */
+}
+
+.review #review{
+    /* display: block; */
+    width: 90%;
+    height: 100px;
+    /* float: left; */
+    border: 10;
+    /* outline: none; */
+    /* margin: 10px; */
+    padding: 10px;
+		align: left;
+    /* background: #bfd9f2; */
+    /* color: #ffffff; */
+    font-family: "lato-regular", Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    /* text-transform: uppercase; */
+    letter-spacing: 1px;
+    /* line-height: 22px; */
+}
+
+.review h2{
+	text-align: left;
+	margin-top: 20px;
+}
+
+/*
+*{
+  margin: 0;
+  padding: 0;
+} */
+.rate {
+		display: inline-block;
+		vertical-align: top;
+    height: 46px;
+    padding: 10px 0px 20px 0px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ff5a60;
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #ff5a60;
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #ff5a60;
+}
+
+
+img.rate_hotel{
+    width: 80%;
+    height: auto!important;
+    vertical-align: top;
+}
+
+
+
 /*  listings section  */
 .listings{
     padding: 50px 0;
@@ -554,6 +682,10 @@ select {
     -webkit-transition: all .2s linear;
     -moz-transition: all .2s linear;
     -o-transition: all .2s linear;
+}
+
+.listings ul li .property_details h1,h2,h3,h4,h5,h6{
+  text-align: left;
 }
 
 .listings ul li:hover .property_details{
@@ -621,35 +753,41 @@ select {
     border: 2px solid #a0c3e5;
 }
 
-
-
-/*  listings section  */
-.large_listings {
-    padding: 0;
+.low_level{
+  padding-top: 0;
 }
 
-.large_listings ul.properties_list{
+
+
+
+
+/*  trips section  */
+.triplistings{
+    padding: 50px 0 100px 0;
+}
+
+.triplistings ul.trips_list{
     list-style: none;
     overflow: hidden;
 }
 
-.large_listings ul.properties_list li{
+.triplistings ul.trips_list li{
     display: block;
-    width: 30.90909090909091%;
+    width: 300px;
     height: auto;
     position: relative;
     float: left;
-    margin: 0 3.636363636363636% 3.636363636363636% 0;
+    margin: 0 40px 40px 0;
 }
 
-.large_listings ul.properties_list li img.property_img{
+.triplistings ul.trips_list li img.property_img{
     width: 100%;
     height: auto!important;
     vertical-align: top;
 }
 
 
-.large_listings ul.properties_list li .price{
+.triplistings ul.trips_list li .price{
     position: absolute;
     top: 10px;
     left: 10px;
@@ -668,13 +806,13 @@ select {
 }
 
 
-.large_listings ul.properties_list li:nth-child(3n+0){
+.triplistings ul.trips_list li:nth-child(3n+0){
     margin-right: 0;
 }
 
-.large_listings ul li .property_details{
-    width: 87.64705882352941%;
-    padding: 2.941176470588235% 5.882352941176471% 4.117647058823529% 5.882352941176471%;
+.triplistings ul li .trip_details{
+    width: 258px;
+    padding: 10px 20px 14px 20px;
     border-bottom: 1px solid #f2f1f1;
     border-left: 1px solid #f2f1f1;
     border-right: 1px solid #f2f1f1;
@@ -685,13 +823,13 @@ select {
     -o-transition: all .2s linear;
 }
 
-.large_listings ul li:hover .property_details{
+.triplistings ul li:hover .trip_details{
     border-bottom: 1px solid #95badf;
     border-left: 1px solid #95badf;
     border-right: 1px solid #95badf;
 }
 
-.large_listings ul li .property_details h1{
+.triplistings ul li .trip_details h1{
     color: #666464;
     font-family: "lato-bold", Helvetica, Arial, sans-serif;
     font-size: 16px!important;
@@ -700,52 +838,45 @@ select {
     line-height: 28px;
 }
 
-.large_listings ul li .property_details h1 a{
+.triplistings ul li .trip_details h1 a{
     text-decoration: none;
     color: #666464;
 }
 
-.large_listings ul li .property_details h2{
+.triplistings ul li .trip_details h2{
     color: #9d9d9d;
     font-family: "lato-regular", Helvetica, Arial, sans-serif;
     font-size: 12px;
     line-height: 26px;
-    font-weight: normal;
 }
 
-.large_listings ul li .property_details .property_size{
+.triplistings ul li .trip_details .property_size{
     color: #676767;
 }
 
-.large_listings .more_listing{
-    display: block;
+
+/* footer section */
+footer{
+    clear: both;
+    position: relative;
+    z-index: 10;
+    height: 6em;
+    margin-top: 0em;
     width: 100%;
+    padding: 10px 0;
+    background: #95badf;
     text-align: center;
-    margin: 84px 0 22px 0;
-}
-
-.large_listings .more_listing_btn{
-    text-decoration: none;
-    padding: 20px 40px;
-    border: 2px solid #bfd9f1;
-    border-radius: 30px;
-    -webkit-border-radius: 30px;
-    -moz-border-radius: 30px;
-    -o-border-radius: 30px;
-    color: #afcbe6;
+    color: #fff;
     font-family: "lato-regular", Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    text-transform: uppercase;
     letter-spacing: 1px;
-    text-align: center;
-
-    transition: all .2s linear;
-    -webkit-transition: all .2s linear;
-    -moz-transition: all .2s linear;
-    -o-transition: all .2s linear;
+    font-size:18px;
+    font-weight:normal;
+    line-height: 300%;
 }
 
-.large_listings .more_listing_btn:hover{
-    color: #a0c3e5;
-    border: 2px solid #a0c3e5;
+footer a{
+  font-size:16px;
+  margin-left: 20px;
+  text-decoration: none;
+  color:#fff;
 }

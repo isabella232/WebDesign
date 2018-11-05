@@ -1,3 +1,79 @@
+//index.js
+function list_more() {
+  var moreText = document.getElementById("more");
+  var btnText = document.getElementById("more_listing_btn");
+
+  if (moreText.style.display === "block") {
+    btnText.innerHTML = "View More Listings";
+    moreText.style.display = "none";
+  } else {
+    btnText.innerHTML = "View Less Listings";
+    moreText.style.display = "block";
+  }
+}
+
+function update_check_out_min()
+{
+  var check_in = document.getElementById('check_in_date');
+  var check_out = document.getElementById('check_out_date');
+  var check_in_date = check_in.value;
+  var check_out_date = check_out.value;
+  var check_out_min = new Date(check_in_date);
+  check_out_min.setDate(check_out_min.getDate() + 1);
+  new_min = formatDate(check_out_min);
+  check_out.min = new_min;
+  var check_out_date = new Date(check_out_date);
+  if(check_out_date < check_out_min)
+    check_out.value = new_min;
+}
+
+
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+//login.js
+function openTab(evt, tabName) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tab-content");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tab");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+function check_password()
+{
+  var password = document.getElementById('password').value;
+  var password2 = document.getElementById('password2').value;
+  if(password !== password2){
+    document.getElementById('submit_button').disabled = true;
+    document.getElementById('error_msg').innerHTML = "<h3 style='color:red;'>Password doesn't match</h3>";
+  }
+  else{
+        document.getElementById('submit_button').disabled = false;
+        document.getElementById('error_msg').innerHTML = "<h3 style='color:green;'>Password matches</h3>";
+  }
+}
+//low_level_search.js
 // use cookie to store checkbx states
 
 //io
@@ -161,4 +237,16 @@ function send_low_level_query()
 
   low_level_query.value = filter.value + sorting.value;
   document.getElementById('low_level_query_form').submit();
+}
+//specific_hotel.js
+function update_total_price()
+{
+  var single_number = document.getElementById("Single_selection").value;
+  var doubele_number = document.getElementById("Double_selection").value;
+  var single_price = document.getElementById("Single_price").value;
+  var double_price = document.getElementById("Double_price").value;
+  var price_per_night = single_number*single_price + double_price*doubele_number;
+  var total_price = price_per_night*document.getElementById("period").value;
+  document.getElementById("total_price").value = total_price;
+  document.getElementById("total_price_show").value = "Total Price:  $"+total_price;
 }

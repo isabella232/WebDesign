@@ -40,68 +40,20 @@ if(isset($_SESSION['success_register']))
 	  $dbcnx->close();
 }
 
+if(isset($_SESSION['redirect']) && isset($_SESSION['valid_user']))
+{
+  $redirect = $_SESSION['redirect'];
+  unset($_SESSION['redirect']);
+  header($redirect);
+}
 ?>
 <html lang="en">
 <head>
 	<title>Hotel Search Portal</title>
 	<meta charset="utf-8">
-	<meta name="author" content="pixelhint.com">
-	<!-- <meta name="description" content="La casa free real state fully responsive html5/css3 home page website template"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" /> -->
-
-	<link rel="stylesheet" type="text/css" href="css/reset.css">
-	<link rel="stylesheet" type="text/css" href="css/responsive.css">
-
-	<script type="text/javascript" src="js/jquery.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<script type="text/javascript" src="js/main.js"></script>
-  <script type="text/javascript" src="js/login.js"></script>
   <style>
-
-  /*  Hero Section  */
-
-  .contacthero{
-      width: 100%;
-      height: 900px;
-      position: relative;
-      background: url('img/blue_hotel.jpg') no-repeat bottom center;
-      /* background-color:  #95badf; */
-      background-size: cover;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-  }
-
-  .contacthero .caption{
-    /* width: 1100px;
-    margin: 0 auto;
-    position: relative; */
-      width: 100%;
-      position: absolute;
-      text-align: center;
-      top: 40%;
-      /* margin-top: -105px; */
-      z-index: 10;
-  }
-
-  .contacthero .caption h2{
-      color: #fff;
-      font-family: "p22_corinthia", Helvetica, Arial, sans-serif;
-      /* font-family: "lato-regular", Helvetica, Arial, sans-serif; */
-      font-size: 100px;
-      font-weight: lighter;
-      margin: 20px;
-      position: relative;
-      display: block;
-  }
-
-  .contacthero .caption h3{
-      color: #fff;
-      font-family: "lato-regular", Helvetica, Arial, sans-serif;
-      font-size: 14px;
-      margin: -15px 0 0 25px;
-      left: 1px;
-  }
-
 
   a {
     text-decoration: none;
@@ -256,10 +208,10 @@ if(isset($_SESSION['success_register']))
 </head>
 <body>
 
-	<section class="contacthero">
+	<section class="full_background hero">
     <header>
 			<div class="wrapper">
-				<a href="#"><img src="img/letter-s.png" height="50px" width="50px" class="logo" alt="" title=""/></a>
+				<a href="index.php"><img src="img/letter-s.png" class="logo" alt="" title=""/></a>
 				<nav>
 					<ul>
 						<li><a href="index.php">Home</a></li>
@@ -278,8 +230,8 @@ if(isset($_SESSION['success_register']))
 						<?php }
 						else{
 						?>
-						<li><a href="login.php">Login</a></li>
-						<li><a href="login.php">Sign Up</a></li>
+						<li><a href="login.php?type=log_in">Login</a></li>
+						<li><a href="login.php?type=sign_up">Sign up</a></li>
 						<?php }
 						?>
 					</ul>
@@ -287,12 +239,6 @@ if(isset($_SESSION['success_register']))
 			</div>
 		</header><!--  end header section  -->
 
-<!--
-    <section class="caption">
-      <h2 class="caption">Help</h2>
-      <h3 class="properties">Questions? You’re in the right place.</h3> -->
-
-    <!-- </section> -->
     <div class="form">
 			<?php
 				if (isset($_SESSION['valid_user']))
@@ -316,7 +262,6 @@ if(isset($_SESSION['success_register']))
           <li><a href="#" id="signup_button" onclick="openTab(event, 'signup');" class="tab">Sign Up</a></li>
           <li><a href="#" id="login_button" onclick="openTab(event, 'login');"  class="tab"> Log In</a></li>
         </ul>
-        <!-- <div class="tab-content"> -->
           <div id="signup" class="tab-content">
             <h1>Sign Up for Free</h1>
 
@@ -330,11 +275,11 @@ if(isset($_SESSION['success_register']))
 														}  ?>
             <div class="top-row">
               <div class="field-wrap">
-                <input type="text" name="name1" placeholder="First Name*" required autocomplete="off" />
+                <input type="text" name="name1" pattern="^[a-zA-Z ]*$" title="Only letters" placeholder="First Name*" required autocomplete="off" />
               </div>
 
               <div class="field-wrap">
-                <input type="text" name="name2" placeholder="Last Name*" required autocomplete="off"/>
+                <input type="text" name="name2" pattern="^[a-zA-Z ]*$" title="Only letters" placeholder="Last Name*" required autocomplete="off"/>
               </div>
             </div>
 
@@ -343,14 +288,14 @@ if(isset($_SESSION['success_register']))
             </div>
 
             <div class="field-wrap">
-              <input type="password" name="password" placeholder="Set A Password*" required autocomplete="off"/>
+              <input type="password" name="password" id="password" placeholder="Set A Password*" required autocomplete="off"/>
             </div>
 
 						<div class="field-wrap">
-							<input type="password" name="password2" placeholder="Confirm Password*" required autocomplete="off"/>
+							<input type="password" name="password2" id="password2" onchange="check_password();" placeholder="Confirm Password*" required autocomplete="off"/>
 						</div>
-
-            <button type="submit" class="button button-block"/>Get Started</button>
+            <div id="error_msg"></div>
+            <button type="submit" class="button button-block" id="submit_button"/>Get Started</button>
 
             </form>
 
@@ -386,9 +331,26 @@ if(isset($_SESSION['success_register']))
 						}
 						else
 						{
-							?>
-							<script>document.getElementById("signup_button").click();</script>
-							<?php
+              if(isset($_GET['type']))
+              {
+                $type = $_GET['type'];
+                if($type == "log_in")
+                {
+                  ?>
+                  <script>document.getElementById("login_button").click();</script>
+                  <?php
+                }
+                else {
+                  ?>
+                  <script>document.getElementById("signup_button").click();</script>
+                  <?php
+                }
+              }
+              else {
+                ?>
+                <script>document.getElementById("signup_button").click();</script>
+                <?php
+              }
 						}
 					?>
 
@@ -397,4 +359,11 @@ if(isset($_SESSION['success_register']))
 	</section><!--  end hero section  -->
 
 </body>
+
+<footer>
+  Copyright &copy; 2018 Hotel Search Portal
+  <br>
+  <a href="mailto:ren@jiawei.com">ren@jiawei.com</a> <a href="mailto:shaun@yong.com">shaun@yong.com</a>
+</footer>
+
 </html>
