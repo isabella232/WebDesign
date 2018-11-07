@@ -11,7 +11,7 @@ The website has following functionalities:
     * Make room recommendation based on guest number.
     * Show details and reviews on specific hotel.
 3. Manage
-    * Cancel upcoming trip, i.e, cancel booking.
+    * Cancel booking.
     * Review past trips.
     * View booking details by Confirmation Code
 
