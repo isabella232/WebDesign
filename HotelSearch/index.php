@@ -86,7 +86,7 @@ $tomorrow =$tomorrow->format('Y-m-d');
 			<ul class="properties_list">
         <!-- interate through hotels and show an brief view of each of them -->
         <?php
-        $result = mysqli_query($dbcnx,"select * from hotel_search");
+        $result = mysqli_query($dbcnx,"select * from hotel_search order by review_score desc");
 				$maximum_show = 3;
 				for($i=0; $i<$maximum_show;$i++){
         	$row = $result->fetch_assoc();
